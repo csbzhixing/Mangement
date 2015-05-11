@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-	
+	//jiaying
 	@RequestMapping("/helloWorld")
 	public String test(Model model){
 		model.addAttribute("message","MVC success");
