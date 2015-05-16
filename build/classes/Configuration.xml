@@ -3,8 +3,9 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases> 
-        <typeAlias alias="User" type="com.mangement.mybatis.model.User"/> 
-    </typeAliases> 
+<!--         <typeAlias alias="User" type="com.mangement.mybatis.model.User"/> -->
+ 			<package name="com.mangement.model"/>
+  </typeAliases> 
 
     <environments default="development">
         <environment id="development">
@@ -22,6 +23,6 @@
 <!--         <mapper resource="com/mangement/mybatis/model/User.xml"/>
  -->       
  
- 			<package name=""/>
+ 			<package name="com.mangement.mappers"/>
     </mappers>
 </configuration>
