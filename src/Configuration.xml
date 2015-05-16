@@ -19,6 +19,9 @@
     </environments>
     
     <mappers>
-        <mapper resource="com/mangement/mybatis/model/User.xml"/>
+<!--         <mapper resource="com/mangement/mybatis/model/User.xml"/>
+ -->       
+ 
+ 			<package name=""/>
     </mappers>
 </configuration>

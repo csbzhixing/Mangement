@@ -1,0 +1,15 @@
+一些xml的说明
+
+
+spring-mvc.xml
+
+	springmvc框架的配制文件
+
+Configuration.xml
+
+	mybaits的配制文件
+	
+log4j.properties
+
+	log4j日志文件的配置
+
