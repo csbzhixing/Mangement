@@ -7,7 +7,12 @@ public class User {
     private String userAge;
     private String userAddress;
     
-    public int getId() {
+    public User(int i, String string, int j, String string2, String string3,
+			String string4, String string5, int k, String string6,
+			String string7) {
+		// TODO Auto-generated constructor stub
+	}
+	public int getId() {
         return id;
     }
     public void setId(int id) {
