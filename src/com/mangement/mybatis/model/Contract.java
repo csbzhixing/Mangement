@@ -2,14 +2,16 @@ package com.mangement.mybatis.model;
 
 import java.sql.Date;
 
+
+
 public class Contract {
-	private String contract_ID;
+	private String contractID;
 	private String name;
-	private Date start_time;
-	private Date finish_time;
-	private Integer total_payment;
+	private Date startTime;
+	private Date finishTime;
+	private Integer totalPayment;
 	private Integer unpayment;
-	private Byte contract_type;
+	private Integer contractType;
 	
 	
 	
@@ -17,63 +19,121 @@ public class Contract {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
-	public Contract(String contract_ID) {
+
+
+	public Contract(String contractID) {
 		super();
-		this.contract_ID = contract_ID;
+		this.contractID = contractID;
 	}
+
+
+
+	public Contract(String contractID, String name, Date startTime,
+			Date finishTime, Integer totalPayment, Integer unpayment,
+			Integer contractType) {
+		super();
+		this.contractID = contractID;
+		this.name = name;
+		this.startTime = startTime;
+		this.finishTime = finishTime;
+		this.totalPayment = totalPayment;
+		this.unpayment = unpayment;
+		this.contractType = contractType;
+	}
+
 
 
 	@Override
 	public String toString() {
-		return "Contract [contract_ID=" + contract_ID + ", name=" + name
-				+ ", start_time=" + start_time + ", finish_time=" + finish_time
-				+ ", total_payment=" + total_payment + ", unpayment="
-				+ unpayment + ", contract_type=" + contract_type + "]";
+		return "Contract [contractID=" + contractID + ", name=" + name
+				+ ", startTime=" + startTime + ", finishTime=" + finishTime
+				+ ", totalPayment=" + totalPayment + ", unpayment=" + unpayment
+				+ ", contractType=" + contractType + "]";
 	}
-	public String getContract_ID() {
-		return contract_ID;
+
+
+
+	public String getContractID() {
+		return contractID;
 	}
-	public void setContract_ID(String contract_ID) {
-		this.contract_ID = contract_ID;
+
+
+
+	public void setContractID(String contractID) {
+		this.contractID = contractID;
 	}
+
+
+
 	public String getName() {
 		return name;
 	}
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getStart_time() {
-		return start_time;
+
+
+
+	public Date getStartTime() {
+		return startTime;
 	}
-	public void setStart_time(Date start_time) {
-		this.start_time = start_time;
+
+
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
-	public Date getFinish_time() {
-		return finish_time;
+
+
+
+	public Date getFinishTime() {
+		return finishTime;
 	}
-	public void setFinish_time(Date finish_time) {
-		this.finish_time = finish_time;
+
+
+
+	public void setFinishTime(Date finishTime) {
+		this.finishTime = finishTime;
 	}
-	public Integer getTotal_payment() {
-		return total_payment;
+
+
+
+	public Integer getTotalPayment() {
+		return totalPayment;
 	}
-	public void setTotal_payment(Integer total_payment) {
-		this.total_payment = total_payment;
+
+
+
+	public void setTotalPayment(Integer totalPayment) {
+		this.totalPayment = totalPayment;
 	}
+
+
+
 	public Integer getUnpayment() {
 		return unpayment;
 	}
+
+
+
 	public void setUnpayment(Integer unpayment) {
 		this.unpayment = unpayment;
 	}
-	public Byte getContract_type() {
-		return contract_type;
+
+
+
+	public Integer getContractType() {
+		return contractType;
 	}
-	public void setContract_type(Byte contract_type) {
-		this.contract_type = contract_type;
+
+
+
+	public void setContractType(Integer contractType) {
+		this.contractType = contractType;
 	}
-	
 	
 }
