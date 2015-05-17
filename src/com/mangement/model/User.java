@@ -11,10 +11,11 @@ public class User {
 	private String address;
 	private Integer phone;
 	private String position;
-	private String IDcard;
+	private Integer IDcard;
+	
 	public User(Integer id, String password, Integer authority, String name,
 			String sex, String birthday, String address, Integer phone,
-			String position, String iDcard) {
+			String position, Integer iDcard) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -81,12 +82,13 @@ public class User {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public String getIDcard() {
+	public Integer getIDcard() {
 		return IDcard;
 	}
-	public void setIDcard(String iDcard) {
+	public void setIDcard(Integer iDcard) {
 		IDcard = iDcard;
 	}
+
 	
 	
 	

@@ -30,11 +30,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from user where id=#{id}
 	</delete>
 	
-	<select id="findById" parameterType="Integer" resultType="User">
+	<select id="findById" parameterType="Integer" resultMap="UserResult">
 		select * from user where id=#{id}
 	</select>
 	
-	<select id="find" resultMap="User">
+	<select id="find" resultMap="UserResult">
 		select * from user
 	</select>
 	

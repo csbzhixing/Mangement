@@ -40,7 +40,7 @@ public class TestUser {
 	@Test
 	public void testAdd() {
 		logger.info("添加用户");
-		User user=new User(111,"dashabi",1,"shenmegui","man","999-999-999","地球",1111111,"扫地的","9999999");
+		User user=new User(111,"dashabi",1,"shenmegui","man","999-999-999","地球",1111111,"扫地的",9999999);
 		userMapper.add(user);
 		sqlSession.commit();
 	}
