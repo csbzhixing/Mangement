@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mangement.mappers.RaimMapper">
+
+	<resultMap type="Reim" id="ReimResult">
+		<id property="id" column="ID"/>
+		<result property="pInvoiceID" column="pInvoiceID"/>
+		<result property="isRead" column="isRead"/>
+		<result property="date" column="date"/>
+		<result property="goods" column="goods"/>
+		<result property="number" column="number"/>
+		<result property="unitPayment" column="unitPayment"/>
+		<result property="remark" column="remark"/>
+		
+	</resultMap>
+	
+<!-- 		private Integer id;
+	private Integer pInvoiceID;
+	private Integer  isRead;
+	private Date date;
+	private String goods;
+	private Integer number;
+	private Integer unitPayment;
+	private String remark; -->
+
+	<insert id="add" parameterType="Raim">
+		insert into user values(#{id},#{pInvoiceID},
+								#{isRead},#{date},
+								#{goods},#{number},
+								#{unitPayment},#{remark})
+	</insert>
+
+	<update id="update" parameterType="Raim">
+		update user set  #{pInvoiceID},
+						 #{isRead},#{date},
+						 #{goods},#{number},
+						 #{unitPayment},#{remark} where id=#{id}
+	</update>
+	
+	
+	<select id="find" resultMap="Reim">
+		select * from reim
+	</select>
+	
+</mapper> 

@@ -12,17 +12,14 @@
         <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
             <property name="driver" value="com.mysql.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://127.0.0.1:3306/test" />
+            <property name="url" value="jdbc:mysql://127.0.0.1:3306/companyfinancialsystem"/>
             <property name="username" value="root"/>
             <property name="password" value=""/>
             </dataSource>
         </environment>
     </environments>
     
-    <mappers>
-<!--         <mapper resource="com/mangement/mybatis/model/User.xml"/>
- -->       
- 
+    <mappers> 
  			<package name="com.mangement.mappers"/>
     </mappers>
 </configuration>
