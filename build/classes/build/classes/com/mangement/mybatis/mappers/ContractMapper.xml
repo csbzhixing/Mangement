@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mangement.mybatis.mappers.ContractMapper">
+	<resultMap type="Contract" id="ContractResult">
+		<id property="contractID" column="contractID" />
+		<result property="name" column="name" />
+		<result property="startTime" column="startTime" />
+		<result property="finishTime" column="finishTime" />
+		<result property="totalPayment" column="totalPayment" />
+		<result property="unpayment" column="unpayment" />
+		<result property="contractType" column="contractType" />
+	</resultMap>
+
+
+	<insert id="insert" parameterType="Map">
+		insert into contract
+		values
+		<foreach item="Contract" collection="Contracts"
+			separator=",">
+			(#{Contract.contractID},
+			#{Contract.name},
+			#{Contract.startTime},
+			#{Contract.finishTime},
+			#{Contract.totalPayment},
+			#{Contract.unpayment},
+			#{Contract.contractType})
+		</foreach>
+	</insert>
+
+	<delete id="delete" parameterType="Map">
+		delete from contract
+		<where>
+			<if test="contractID!=null">
+				and contractID like #{contractID}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="startTime!=null">
+				and startTime = #{startTime}
+			</if>
+			<if test="finishTime!=null">
+				and finishTime = #{finishTime}
+			</if>
+			<if test="totalPayment!=null">
+				and totalPayment = #{totalPayment}
+			</if>
+			<if test="unpayment!=null">
+				and unpayment = #{unpayment}
+			</if>
+			<if test="contractType!=null">
+				and contractType = #{contractType}
+			</if>
+		</where>
+	</delete>
+
+
+	<select id="find" parameterType="Map" resultMap="ContractResult">
+		select * from contract
+		<where>
+			<if test="contractID!=null">
+				and contractID like #{contractID}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="startTime!=null">
+				and startTime = #{startTime}
+			</if>
+			<if test="finishTime!=null">
+				and finishTime = #{finishTime}
+			</if>
+			<if test="totalPayment!=null">
+				and totalPayment = #{totalPayment}
+			</if>
+			<if test="unpayment!=null">
+				and unpayment = #{unpayment}
+			</if>
+			<if test="contractType!=null">
+				and contractType = #{contractType}
+			</if>
+		</where>
+	</select>
+
+	<update id="update" parameterType="Contract">
+		update contract
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="startTime!=null">
+				startTime = #{startTime},
+			</if>
+			<if test="finishTime!=null">
+				finishTime = #{finishTime},
+			</if>
+			<if test="totalPayment!=null">
+				totalPayment = #{totalPayment},
+			</if>
+			<if test="unpayment!=null">
+				unpayment = #{unpayment},
+			</if>
+			<if test="contractType!=null">
+				contractType = #{contractType}
+			</if>
+		</set>
+		where contractID=#{contractID}
+	</update>
+
+</mapper> 
