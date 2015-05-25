@@ -34,7 +34,7 @@ public class NoticeTest {
 
 	@Test
 	public void insert() {
-		Notice a1 = new Notice(3,20150003);
+		Notice a1 = new Notice("3","20150003");
 		Notices.add(a1);
 		map.put("Notices", Notices);
 		noticeMapper.insert(map);
@@ -57,6 +57,6 @@ public class NoticeTest {
 
 	@Test
 	public void update() {
-		noticeMapper.update(new Notice(3,20150003,"bye",new Date(),0));
+		noticeMapper.update(new Notice("3","20150003","bye",new Date(),0));
 	}
 }

@@ -1,5 +1,6 @@
 package com.mangement.test;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,7 @@ public class SalaryCurrentTest {
 
 	@Test
 	public void insert() {
-		SalaryCurrent a1 = new SalaryCurrent(123);
+		SalaryCurrent a1 = new SalaryCurrent("123");
 		SalaryCurrents.add(a1);
 		map.put("SalaryCurrents", SalaryCurrents);
 		salaryCurrentMapper.insert(map);
@@ -57,6 +58,6 @@ public class SalaryCurrentTest {
 
 	@Test
 	public void update() {
-		salaryCurrentMapper.update(new SalaryCurrent(20150001,null,null,22,null,null,null));
+		salaryCurrentMapper.update(new SalaryCurrent("20150001",null,null,new BigInteger("22"),null,null,null));
 	}
 }

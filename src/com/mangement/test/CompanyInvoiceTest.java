@@ -2,6 +2,7 @@ package com.mangement.test;
 
 
 import java.util.ArrayList;
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -36,18 +37,18 @@ public class CompanyInvoiceTest {
 
 	@Test
 	public void insert() {
-		CompanyInvoice a1=new CompanyInvoice(15);
-		CompanyInvoice a2=new CompanyInvoice(16);
-		CompanyInvoice a3=new CompanyInvoice(17);
+		CompanyInvoice a1=new CompanyInvoice("11");
+		CompanyInvoice a2=new CompanyInvoice("16");
+		CompanyInvoice a3=new CompanyInvoice("17");
 		a1.setContractID("11000001");
 		a2.setContractID("11000002");
 		a3.setContractID("11000003");
 		a1.setDate(new Date(new java.util.Date().getTime()));
 		a2.setDate(new Date(new java.util.Date().getTime()));
 		a3.setDate(new Date(new java.util.Date().getTime()));
-		a1.setPayment(100);
-		a2.setPayment(200);
-		a3.setPayment(300);
+		a1.setPayment(new BigInteger("100"));
+		a2.setPayment(new BigInteger("200"));
+		a3.setPayment(new BigInteger("300"));
 		a1.setType(2);
 		a2.setType(3);
 		a3.setType(4);
@@ -60,13 +61,14 @@ public class CompanyInvoiceTest {
 
 	@Test
 	public void delete() {
-		map.put("date", "2015-05-17");
+		map.put("date", "2015-05-18");
 		companyInvoiceMapper.delete(map);
 	}
 
 
 	@Test
 	public void find() {
+		map.put("type", "1");
 		List<CompanyInvoice> list = companyInvoiceMapper.find(map);
 		for (CompanyInvoice s : list) {
 			System.out.println(s);
@@ -75,6 +77,6 @@ public class CompanyInvoiceTest {
 
 	@Test
 	public void update(){
-		companyInvoiceMapper.update(new CompanyInvoice(15,"11000002",null,null,0));
+		companyInvoiceMapper.update(new CompanyInvoice("20000001","11000002",new BigInteger("100"),null,0));
 	}
 }

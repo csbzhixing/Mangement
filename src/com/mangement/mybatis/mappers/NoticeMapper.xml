@@ -28,10 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from notice
 		<where>
 			<if test="noticeID!=null">
-				and noticeID=#{noticeID}
+				and noticeID like #{noticeID}
 			</if>
 			<if test="ID!=null">
-				and ID = #{ID}
+				and ID like #{ID}
 			</if>
 			<if test="content!=null">
 				and content like #{content}
@@ -50,10 +50,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice
 		<where>
 			<if test="noticeID!=null">
-				and noticeID = #{noticeID}
+				and noticeID like #{noticeID}
 			</if>
 			<if test="ID!=null">
-				and ID = #{ID}
+				and ID like #{ID}
 			</if>
 			<if test="content!=null">
 				and content like #{content}
@@ -80,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				isread = #{isread}
 			</if>
 		</set>
-		where noticeID=#{noticeID} and ID = #{ID}
+		where noticeID like #{noticeID} and ID like #{ID}
 	</update>
 
 </mapper> 

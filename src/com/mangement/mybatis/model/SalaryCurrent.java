@@ -1,28 +1,31 @@
 package com.mangement.mybatis.model;
 
+import java.math.BigInteger;
+
 public class SalaryCurrent {
 
-	private Integer ID;
-	private Integer basicSalary;
-	private Integer livingAllowance;
-	private Integer workDay;
-	private Integer attendanceAward;
-	private Integer socialSecurity;
-	private Integer tax;
+	private String ID;
+	private BigInteger basicSalary;
+	private BigInteger livingAllowance;
+	private BigInteger workDay;
+	private BigInteger attendanceAward;
+	private BigInteger socialSecurity;
+	private BigInteger tax;
 	
 	public SalaryCurrent() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public SalaryCurrent(Integer iD) {
+	public SalaryCurrent(String iD) {
 		super();
 		ID = iD;
 	}
 
-	public SalaryCurrent(Integer iD, Integer basicSalary,
-			Integer livingAllowance, Integer workDay, Integer attendanceAward,
-			Integer socialSecurity, Integer tax) {
+	public SalaryCurrent(String iD, BigInteger basicSalary,
+			BigInteger livingAllowance, BigInteger workDay,
+			BigInteger attendanceAward, BigInteger socialSecurity,
+			BigInteger tax) {
 		super();
 		ID = iD;
 		this.basicSalary = basicSalary;
@@ -41,62 +44,61 @@ public class SalaryCurrent {
 				+ ", socialSecurity=" + socialSecurity + ", tax=" + tax + "]";
 	}
 
-	public Integer getID() {
+	public String getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 
-	public Integer getBasicSalary() {
+	public BigInteger getBasicSalary() {
 		return basicSalary;
 	}
 
-	public void setBasicSalary(Integer basicSalary) {
+	public void setBasicSalary(BigInteger basicSalary) {
 		this.basicSalary = basicSalary;
 	}
 
-	public Integer getLivingAllowance() {
+	public BigInteger getLivingAllowance() {
 		return livingAllowance;
 	}
 
-	public void setLivingAllowance(Integer livingAllowance) {
+	public void setLivingAllowance(BigInteger livingAllowance) {
 		this.livingAllowance = livingAllowance;
 	}
 
-	public Integer getWorkDay() {
+	public BigInteger getWorkDay() {
 		return workDay;
 	}
 
-	public void setWorkDay(Integer workDay) {
+	public void setWorkDay(BigInteger workDay) {
 		this.workDay = workDay;
 	}
 
-	public Integer getAttendanceAward() {
+	public BigInteger getAttendanceAward() {
 		return attendanceAward;
 	}
 
-	public void setAttendanceAward(Integer attendanceAward) {
+	public void setAttendanceAward(BigInteger attendanceAward) {
 		this.attendanceAward = attendanceAward;
 	}
 
-	public Integer getSocialSecurity() {
+	public BigInteger getSocialSecurity() {
 		return socialSecurity;
 	}
 
-	public void setSocialSecurity(Integer socialSecurity) {
+	public void setSocialSecurity(BigInteger socialSecurity) {
 		this.socialSecurity = socialSecurity;
 	}
 
-	public Integer getTax() {
+	public BigInteger getTax() {
 		return tax;
 	}
 
-	public void setTax(Integer tax) {
+	public void setTax(BigInteger tax) {
 		this.tax = tax;
 	}
-	
 	
 	
 }

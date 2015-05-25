@@ -1,5 +1,6 @@
 package com.mangement.mybatis.model;
 
+import java.math.BigInteger;
 import java.sql.Date;
 
 
@@ -9,8 +10,8 @@ public class Contract {
 	private String name;
 	private Date startTime;
 	private Date finishTime;
-	private Integer totalPayment;
-	private Integer unpayment;
+	private BigInteger totalPayment;
+	private BigInteger unpayment;
 	private Integer contractType;
 	
 	
@@ -30,7 +31,7 @@ public class Contract {
 
 
 	public Contract(String contractID, String name, Date startTime,
-			Date finishTime, Integer totalPayment, Integer unpayment,
+			Date finishTime, BigInteger totalPayment, BigInteger unpayment,
 			Integer contractType) {
 		super();
 		this.contractID = contractID;
@@ -102,25 +103,25 @@ public class Contract {
 
 
 
-	public Integer getTotalPayment() {
+	public BigInteger getTotalPayment() {
 		return totalPayment;
 	}
 
 
 
-	public void setTotalPayment(Integer totalPayment) {
+	public void setTotalPayment(BigInteger totalPayment) {
 		this.totalPayment = totalPayment;
 	}
 
 
 
-	public Integer getUnpayment() {
+	public BigInteger getUnpayment() {
 		return unpayment;
 	}
 
 
 
-	public void setUnpayment(Integer unpayment) {
+	public void setUnpayment(BigInteger unpayment) {
 		this.unpayment = unpayment;
 	}
 
@@ -135,5 +136,7 @@ public class Contract {
 	public void setContractType(Integer contractType) {
 		this.contractType = contractType;
 	}
+
+
 	
 }
