@@ -4,8 +4,8 @@ import java.util.Date;
 
 
 public class Notice {
-	private Integer noticeID;
-	private Integer ID;
+	private String noticeID;
+	private String ID;
 	private String content;
 	private Date date;	
 	private Integer isread;
@@ -15,13 +15,13 @@ public class Notice {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notice(Integer noticeID, Integer iD) {
+	public Notice(String noticeID, String iD) {
 		super();
 		this.noticeID = noticeID;
 		ID = iD;
 	}
 
-	public Notice(Integer noticeID, Integer iD, String content, Date date,
+	public Notice(String noticeID, String iD, String content, Date date,
 			Integer isread) {
 		super();
 		this.noticeID = noticeID;
@@ -37,19 +37,19 @@ public class Notice {
 				+ content + ", date=" + date + ", isread=" + isread + "]";
 	}
 
-	public Integer getNoticeID() {
+	public String getNoticeID() {
 		return noticeID;
 	}
 
-	public void setNoticeID(Integer noticeID) {
+	public void setNoticeID(String noticeID) {
 		this.noticeID = noticeID;
 	}
 
-	public Integer getID() {
+	public String getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 

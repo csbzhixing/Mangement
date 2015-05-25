@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from companyinvoice
 		<where>
 			<if test="cInvoiceID!=null">
-				and cInvoiceID=#{cInvoiceID}
+				and cInvoiceID like #{cInvoiceID}
 			</if>
 			<if test="contractID!=null">
 				and contractID like #{contractID}
@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from companyinvoice
 		<where>
 			<if test="cInvoiceID!=null">
-				and cInvoiceID=#{cInvoiceID}
+				and cInvoiceID like #{cInvoiceID}
 			</if>
 			<if test="contractID!=null">
 				and contractID like #{contractID}
@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				type = #{type}
 			</if>
 		</set>
-		where cInvoiceID=#{cInvoiceID}
+		where cInvoiceID like #{cInvoiceID}
 	</update>
 
 </mapper> 

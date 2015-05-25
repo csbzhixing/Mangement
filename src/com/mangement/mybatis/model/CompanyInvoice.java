@@ -1,14 +1,15 @@
 package com.mangement.mybatis.model;
 
+import java.math.BigInteger;
 import java.sql.Date;
 
 
 
 public class CompanyInvoice {
 
-	private Integer cInvoiceID;
+	private String cInvoiceID;
 	private String contractID;
-	private Integer payment;
+	private BigInteger payment;
 	private Date date;
 	private Integer type;
 	
@@ -19,14 +20,16 @@ public class CompanyInvoice {
 	}
 
 
-	public CompanyInvoice(Integer cInvoiceID) {
+	public CompanyInvoice(String cInvoiceID) {
 		super();
 		this.cInvoiceID = cInvoiceID;
 	}
 
 
-	public CompanyInvoice(Integer cInvoiceID, String contractID,
-			Integer payment, Date date, Integer type) {
+
+
+	public CompanyInvoice(String cInvoiceID, String contractID,
+			BigInteger payment, Date date, Integer type) {
 		super();
 		this.cInvoiceID = cInvoiceID;
 		this.contractID = contractID;
@@ -44,12 +47,12 @@ public class CompanyInvoice {
 	}
 
 
-	public Integer getcInvoiceID() {
+	public String getcInvoiceID() {
 		return cInvoiceID;
 	}
 
 
-	public void setcInvoiceID(Integer cInvoiceID) {
+	public void setcInvoiceID(String cInvoiceID) {
 		this.cInvoiceID = cInvoiceID;
 	}
 
@@ -64,12 +67,13 @@ public class CompanyInvoice {
 	}
 
 
-	public Integer getPayment() {
+
+	public BigInteger getPayment() {
 		return payment;
 	}
 
 
-	public void setPayment(Integer payment) {
+	public void setPayment(BigInteger payment) {
 		this.payment = payment;
 	}
 
@@ -92,7 +96,7 @@ public class CompanyInvoice {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	
+
 
 	
 }
