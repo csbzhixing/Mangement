@@ -11,20 +11,20 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mangement.mybatis.mappers.SalaryCurrentMapper;
-import com.mangement.mybatis.model.SalaryCurrent;
+import com.mangement.mybatis.mappers.ReimMapper;
+import com.mangement.mybatis.model.Reim;
 import com.mangement.mybatis.util.SqlSessionFactoryUtil;
 
-public class SalaryCurrentTest {
-	SalaryCurrentMapper salaryCurrentMapper = null;
+public class ReimTest {
+	ReimMapper reimMapper = null;
 	private SqlSession sqlSession = null;
 	Map<String, Object> map = new HashMap<String, Object>();
-	List<SalaryCurrent> SalaryCurrents = new ArrayList<SalaryCurrent>();
+	List<Reim> Reims = new ArrayList<Reim>();
 
 	@Before
 	public void setUp() throws Exception {
 		sqlSession = SqlSessionFactoryUtil.openSession();
-		salaryCurrentMapper = sqlSession.getMapper(SalaryCurrentMapper.class);
+		reimMapper = sqlSession.getMapper(ReimMapper.class);
 	}
 
 	@After
@@ -35,29 +35,29 @@ public class SalaryCurrentTest {
 
 	@Test
 	public void insert() {
-		SalaryCurrent a1 = new SalaryCurrent("123");
-		SalaryCurrents.add(a1);
-		map.put("SalaryCurrents", SalaryCurrents);
-		salaryCurrentMapper.insert(map);
+		Reim a1 = new Reim("123","10000002");
+		Reims.add(a1);
+		map.put("Reims", Reims);
+		reimMapper.insert(map);
 	}
 
 	@Test
 	public void delete() {
-		map.put("id", "123");
-		salaryCurrentMapper.delete(map);
+		map.put("ID", "123");
+		reimMapper.delete(map);
 	}
 
 	@Test
 	public void find() {
-		map.put("tax", 0);
-		List<SalaryCurrent> list = salaryCurrentMapper.find(map);
-		for (SalaryCurrent s : list) {
+		map.put("isread", "1");
+		List<Reim> list = reimMapper.find(map);
+		for (Reim s : list) {
 			System.out.println(s);
 		}
 	}
 
 	@Test
 	public void update() {
-		salaryCurrentMapper.update(new SalaryCurrent("20150001",null,null,new BigInteger("33"),null,null,null));
+		reimMapper.update(new Reim("123","10000002",1,new java.sql.Date(new java.util.Date().getTime()),"shi",new BigInteger("1"),new BigInteger("654"),"fd"));
 	}
 }

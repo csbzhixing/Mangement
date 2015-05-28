@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mangement.mybatis.mappers.ReimMapper">
+	<resultMap type="Reim" id="ReimResult">
+		<id property="ID" column="ID" />
+		<id property="pInvoiceID" column="pInvoiceID" />
+		<result property="isread" column="isread" />
+		<result property="date" column="date" />
+		<result property="goods" column="goods" />
+		<result property="number" column="number" />
+		<result property="unitPrice" column="unitPrice" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+
+	<insert id="insert" parameterType="Map">
+		insert into reim
+		values
+		<foreach item="Reim" collection="Reims" separator=",">
+			(#{Reim.ID},
+			#{Reim.pInvoiceID},
+			#{Reim.isread},
+			#{Reim.date},
+			#{Reim.goods},
+			#{Reim.number},
+			#{Reim.unitPrice},
+			#{Reim.remark})
+		</foreach>
+	</insert>
+
+	<delete id="delete" parameterType="Map">
+		delete from reim
+		<where>
+			<if test="ID!=null">
+				and ID like #{ID}
+			</if>
+			<if test="pInvoiceID=null">
+				and pInvoiceID like #{pInvoiceID}
+			</if>
+			<if test="isread!=null">
+				and isread = #{isread}
+			</if>
+			<if test="date!=null">
+				and Date = #{date}
+			</if>
+			<if test="goods!=null">
+				and goods like #{goods}
+			</if>
+			<if test="number!=null">
+				and number = #{number}
+			</if>
+			<if test="goods!=null">
+				and unitPrice = #{unitPrice}
+			</if>
+			<if test="remark!=null">
+				and remark like #{remark}
+			</if>
+		</where>
+	</delete>
+
+
+	<select id="find" parameterType="Map" resultMap="ReimResult">
+		select * from reim
+		<where>
+			<if test="ID!=null">
+				and ID like #{ID}
+			</if>
+			<if test="pInvoiceID=null">
+				and pInvoiceID like #{pInvoiceID}
+			</if>
+			<if test="isread!=null">
+				and isread = #{isread}
+			</if>
+			<if test="date!=null">
+				and Date = #{date}
+			</if>
+			<if test="goods!=null">
+				and goods like #{goods}
+			</if>
+			<if test="number!=null">
+				and number = #{number}
+			</if>
+			<if test="goods!=null">
+				and unitPrice = #{unitPrice}
+			</if>
+			<if test="remark!=null">
+				and remark like #{remark}
+			</if>
+		</where>
+	</select>
+
+	<update id="update" parameterType="Reim">
+		update reim
+		<set>
+			<if test="isread!=null">
+				isread = #{isread},
+			</if>
+			<if test="date!=null">
+				Date = #{date},
+			</if>
+			<if test="goods!=null">
+				goods = #{goods},
+			</if>
+			<if test="number!=null">
+				number = #{number},
+			</if>
+			<if test="goods!=null">
+				unitPrice = #{unitPrice},
+			</if>
+			<if test="remark!=null">
+				remark = #{remark}
+			</if>
+		</set>
+		where pInvoiceID like #{pInvoiceID} and ID like #{ID}
+	</update>
+
+</mapper> 

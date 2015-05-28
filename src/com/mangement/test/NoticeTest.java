@@ -1,7 +1,6 @@
 package com.mangement.test;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +56,6 @@ public class NoticeTest {
 
 	@Test
 	public void update() {
-		noticeMapper.update(new Notice("3","20150003","bye",new Date(),0));
+		noticeMapper.update(new Notice("3","20150003","bye",new java.sql.Date(new java.util.Date().getTime()),0));
 	}
 }

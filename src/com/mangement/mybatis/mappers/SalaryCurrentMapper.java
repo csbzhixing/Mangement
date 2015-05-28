@@ -10,5 +10,5 @@ public interface SalaryCurrentMapper {
 	public void insert(Map<String,Object> map);
 	public void delete(Map<String,Object> map);
 	public List<SalaryCurrent> find(Map<String,Object> map);
-	public void update(SalaryCurrent companyInvoice);
+	public void update(SalaryCurrent salaryCurrent);
 }

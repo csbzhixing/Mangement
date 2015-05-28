@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mangement.mybatis.mappers.PersonalInvoiceMapper">
+	<resultMap type="PersonalInvoice" id="PersonalInvoiceResult">
+		<id property="pInvoiceID" column="pInvoiceID" />
+		<result property="payment" column="payment" />
+		<result property="date" column="Date" />
+	</resultMap>
+
+
+	<insert id="insert" parameterType="Map">
+		insert into personalinvoice
+		values
+		<foreach item="PersonalInvoice" collection="PersonalInvoices"
+			separator=",">
+			(#{PersonalInvoice.pInvoiceID},
+			#{PersonalInvoice.payment},
+			#{PersonalInvoice.date})
+		</foreach>
+	</insert>
+
+	<delete id="delete" parameterType="Map">
+		delete from personalinvoice
+		<where>
+			<if test="pInvoiceID!=null">
+				and pInvoiceID like #{pInvoiceID}
+			</if>
+			<if test="payment!=null">
+				and payment = #{payment}
+			</if>
+			<if test="date!=null">
+				and Date = #{date}
+			</if>
+		</where>
+	</delete>
+
+
+	<select id="find" parameterType="Map" resultMap="PersonalInvoiceResult">
+		select * from personalinvoice
+		<where>
+			<if test="pInvoiceID!=null">
+				and pInvoiceID like #{pInvoiceID}
+			</if>
+			<if test="payment!=null">
+				and payment = #{payment}
+			</if>
+			<if test="date!=null">
+				and Date = #{date}
+			</if>
+		</where>
+	</select>
+
+	<update id="update" parameterType="PersonalInvoice">
+		update personalinvoice
+		<set>
+			<if test="payment!=null">
+				payment = #{payment},
+			</if>
+			<if test="date!=null">
+				Date = #{date},
+			</if>
+		</set>
+		where pInvoiceID like #{pInvoiceID}
+	</update>
+
+</mapper> 
