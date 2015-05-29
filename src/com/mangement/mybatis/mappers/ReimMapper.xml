@@ -12,6 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="number" column="number" />
 		<result property="unitPrice" column="unitPrice" />
 		<result property="remark" column="remark" />
+		
+		<association property="personalInvoice" column="pInvoiceID" select="com.mangement.mybatis.mappers.PersonalInvoiceMapper.findByPInvoiceID"></association>
+		<association property="user" column="ID" select="com.mangement.mybatis.mappers.UserMapper.findByID"></association>
 	</resultMap>
 
 
@@ -60,6 +63,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</delete>
 
+	<select id="findByID" parameterType="String" resultMap="ReimResult">
+		select * from reim where ID like #{ID}
+	</select>
+	
+	<select id="findByPInvoiceID" parameterType="String" resultMap="ReimResult">
+		select * from reim where pInvoiceID like #{pInvoiceID}
+	</select>
 
 	<select id="find" parameterType="Map" resultMap="ReimResult">
 		select * from reim

@@ -12,7 +12,7 @@ public class CompanyInvoice {
 	private BigInteger payment;
 	private Date date;
 	private Integer type;
-	
+	private Contract contract;
 
 	public CompanyInvoice() {
 		super();
@@ -95,6 +95,16 @@ public class CompanyInvoice {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+
+	public Contract getContract() {
+		return contract;
+	}
+
+
+	public void setContract(Contract contract) {
+		this.contract = contract;
 	}
 
 

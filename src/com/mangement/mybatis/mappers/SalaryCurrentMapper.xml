@@ -11,6 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="attendanceAward" column="attendanceAward" />
 		<result property="socialSecurity" column="socialSecurity" />
 		<result property="tax" column="tax" />
+		
+		<association property="user" column="ID" select="com.mangement.mybatis.mappers.UserMapper.findByID"></association>
 	</resultMap>
 
 
@@ -56,6 +58,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</delete>
 
+	<select id="findByID" parameterType="String" resultMap="SalaryCurrentResult">
+		select * from salarycurrent where ID=#{ID}
+	</select>
 
 	<select id="find" parameterType="Map" resultMap="SalaryCurrentResult">
 		select * from salarycurrent

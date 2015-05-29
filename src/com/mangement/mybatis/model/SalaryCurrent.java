@@ -11,6 +11,7 @@ public class SalaryCurrent {
 	private BigInteger attendanceAward;
 	private BigInteger socialSecurity;
 	private BigInteger tax;
+	private User user;
 	
 	public SalaryCurrent() {
 		super();
@@ -35,6 +36,7 @@ public class SalaryCurrent {
 		this.socialSecurity = socialSecurity;
 		this.tax = tax;
 	}
+
 
 	@Override
 	public String toString() {
@@ -98,6 +100,14 @@ public class SalaryCurrent {
 
 	public void setTax(BigInteger tax) {
 		this.tax = tax;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

@@ -62,7 +62,7 @@ public class ContractTest {
 
 	@Test
 	public void find() {
-		map.put("startTime", "2015-05-17");
+		map.put("contractType", "0");
 		List<Contract> list = contractMapper.find(map);
 		for (Contract s : list) {
 			System.out.println(s);

@@ -49,7 +49,7 @@ public class SalaryHistoryTest {
 
 	@Test
 	public void find() {
-		map.put("payoffDate", new java.sql.Date(new java.util.Date().getTime()));
+		map.put("tax", 0);
 		List<SalaryHistory> list = salaryHistoryMapper.find(map);
 		for (SalaryHistory s : list) {
 			System.out.println(s);

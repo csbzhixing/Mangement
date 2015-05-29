@@ -2,6 +2,7 @@ package com.mangement.mybatis.model;
 
 import java.math.BigInteger;
 import java.sql.Date;
+import java.util.List;
 
 
 
@@ -10,7 +11,7 @@ public class PersonalInvoice {
 	private String pInvoiceID;
 	private BigInteger payment;
 	private Date date;
-	
+	private List<Reim> reim;
 
 	public PersonalInvoice() {
 		super();
@@ -67,6 +68,18 @@ public class PersonalInvoice {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+
+	public List<Reim> getReim() {
+		return reim;
+	}
+
+
+	public void setReim(List<Reim> reim) {
+		this.reim = reim;
+	}
+
+
 
 	
 }

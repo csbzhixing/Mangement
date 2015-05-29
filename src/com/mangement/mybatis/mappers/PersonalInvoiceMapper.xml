@@ -7,6 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<id property="pInvoiceID" column="pInvoiceID" />
 		<result property="payment" column="payment" />
 		<result property="date" column="Date" />
+		
+		<collection property="reim" column="pInvoiceID" select="com.mangement.mybatis.mappers.ReimMapper.findByPInvoiceID"></collection>
 	</resultMap>
 
 
@@ -36,6 +38,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</delete>
 
+	<select id="findByPInvoiceID" parameterType="String" resultMap="PersonalInvoiceResult">
+		select * from personalinvoice where pInvoiceID like #{pInvoiceID}
+	</select>
 
 	<select id="find" parameterType="Map" resultMap="PersonalInvoiceResult">
 		select * from personalinvoice

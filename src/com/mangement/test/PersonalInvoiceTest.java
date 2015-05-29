@@ -55,7 +55,7 @@ public class PersonalInvoiceTest {
 
 	@Test
 	public void find() {
-		map.put("date", new java.sql.Date(new java.util.Date().getTime()));
+		map.put("payment", new BigInteger("269"));
 		List<PersonalInvoice> list = personalInvoiceMapper.find(map);
 		for (PersonalInvoice s : list) {
 			System.out.println(s);

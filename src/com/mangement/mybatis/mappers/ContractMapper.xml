@@ -11,6 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="totalPayment" column="totalPayment" />
 		<result property="unpayment" column="unpayment" />
 		<result property="contractType" column="contractType" />
+		
+		<collection property="companyInvoice" column="contractID" select="com.mangement.mybatis.mappers.CompanyInvoiceMapper.findByContractID"></collection>
 	</resultMap>
 
 
@@ -56,6 +58,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</delete>
 
+	<select id="findByID" parameterType="String" resultMap="ContractResult">
+		select * from contract where contractID like #{contractID}
+	</select>
 
 	<select id="find" parameterType="Map" resultMap="ContractResult">
 		select * from contract

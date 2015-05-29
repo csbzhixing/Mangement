@@ -10,6 +10,7 @@ public class Notice {
 	private String content;
 	private Date date;	
 	private Integer isread;
+	private User user;
 	
 	public Notice() {
 		super();
@@ -76,6 +77,14 @@ public class Notice {
 
 	public void setIsread(Integer isread) {
 		this.isread = isread;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

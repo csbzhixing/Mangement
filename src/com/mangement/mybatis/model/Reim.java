@@ -15,7 +15,8 @@ public class Reim {
 	private BigInteger number;
 	private BigInteger unitPrice;
 	private String remark;
-	
+	private User user;
+	private PersonalInvoice personalInvoice;
 
 	public Reim() {
 		super();
@@ -43,15 +44,14 @@ public class Reim {
 		this.remark = remark;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Reim [ID=" + ID + ", pInvoiceID=" + pInvoiceID + ", isread="
 				+ isread + ", date=" + date + ", goods=" + goods + ", number="
 				+ number + ", unitPrice=" + unitPrice + ", remark=" + remark
+				+ ", personalInvoice=" + personalInvoice
 				+ "]";
 	}
-
 
 	public String getID() {
 		return ID;
@@ -61,7 +61,6 @@ public class Reim {
 	public void setID(String iD) {
 		ID = iD;
 	}
-
 
 	public String getpInvoiceID() {
 		return pInvoiceID;
@@ -130,6 +129,26 @@ public class Reim {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public PersonalInvoice getPersonalInvoice() {
+		return personalInvoice;
+	}
+
+
+	public void setPersonalInvoice(PersonalInvoice personalInvoice) {
+		this.personalInvoice = personalInvoice;
 	}
 
 

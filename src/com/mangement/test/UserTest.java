@@ -54,7 +54,7 @@ public class UserTest {
 
 	@Test
 	public void find() {
-		map.put("birthday", "1999-9-9");
+		map.put("authority", 2);
 		List<User> list = userMapper.find(map);
 		for (User s : list) {
 			System.out.println(s);

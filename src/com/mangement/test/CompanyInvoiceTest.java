@@ -67,7 +67,7 @@ public class CompanyInvoiceTest {
 
 	@Test
 	public void find() {
-		map.put("type", "1");
+		map.put("type", "0");
 		List<CompanyInvoice> list = companyInvoiceMapper.find(map);
 		for (CompanyInvoice s : list) {
 			System.out.println(s);

@@ -14,6 +14,7 @@ public class SalaryHistory {
 	private BigInteger socialSecurity;
 	private BigInteger tax;
 	private BigInteger totalSalary;
+	private User user;
 	
 	public SalaryHistory() {
 		super();
@@ -41,6 +42,8 @@ public class SalaryHistory {
 		this.tax = tax;
 		this.totalSalary = totalSalary;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -122,6 +125,14 @@ public class SalaryHistory {
 
 	public void setTotalSalary(BigInteger totalSalary) {
 		this.totalSalary = totalSalary;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
