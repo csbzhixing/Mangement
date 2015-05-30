@@ -50,6 +50,8 @@ public class SalaryHistoryTest {
 	@Test
 	public void find() {
 		map.put("tax", 0);
+		map.put("start", 0);
+		map.put("size", 10);
 		List<SalaryHistory> list = salaryHistoryMapper.find(map);
 		for (SalaryHistory s : list) {
 			System.out.println(s);

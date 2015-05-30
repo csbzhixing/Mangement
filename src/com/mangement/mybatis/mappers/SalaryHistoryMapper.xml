@@ -103,6 +103,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and totalSalary = #{totalSalary}
 			</if>
 		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
 	</select>
 
 	<update id="update" parameterType="SalaryHistory">

@@ -63,6 +63,8 @@ public class ContractTest {
 	@Test
 	public void find() {
 		map.put("contractType", "0");
+		map.put("start", 0);
+		map.put("size", 10);
 		List<Contract> list = contractMapper.find(map);
 		for (Contract s : list) {
 			System.out.println(s);
