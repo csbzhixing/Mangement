@@ -50,6 +50,8 @@ public class ReimTest {
 	@Test
 	public void find() {
 		map.put("isread", "1");
+		map.put("start", 0);
+		map.put("size", 10);
 		List<Reim> list = reimMapper.find(map);
 		for (Reim s : list) {
 			System.out.println(s);

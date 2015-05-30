@@ -55,7 +55,8 @@ public class PersonalInvoiceTest {
 
 	@Test
 	public void find() {
-		map.put("payment", new BigInteger("269"));
+		map.put("start", 0);
+		map.put("size", 10);
 		List<PersonalInvoice> list = personalInvoiceMapper.find(map);
 		for (PersonalInvoice s : list) {
 			System.out.println(s);

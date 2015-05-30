@@ -50,6 +50,8 @@ public class SalaryCurrentTest {
 	@Test
 	public void find() {
 		map.put("tax", 0);
+		map.put("start", 0);
+		map.put("size", 10);
 		List<SalaryCurrent> list = salaryCurrentMapper.find(map);
 		for (SalaryCurrent s : list) {
 			System.out.println(s);

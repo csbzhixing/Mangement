@@ -99,6 +99,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and remark like #{remark}
 			</if>
 		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
 	</select>
 
 	<update id="update" parameterType="Reim">
