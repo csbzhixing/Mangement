@@ -57,8 +57,8 @@ public class UserTest {
 		map.put("authority", 2);
 		map.put("start", 0);
 		map.put("size", 10);
-		List<User> list = userMapper.find(map);
-		for (User s : list) {
+		List<Object> list = userMapper.find(map);
+		for (Object s : list) {
 			System.out.println(s);
 		}
 	}

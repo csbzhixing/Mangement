@@ -1,40 +1,25 @@
 package com.mangement.test;
 
+
 import java.util.ArrayList;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import com.mangement.mybatis.mappers.ContractMapper;
+import com.mangement.mybatis.connections.Connect2Contract;
 import com.mangement.mybatis.model.Contract;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
 
-public class ContractTest {
-	ContractMapper contractMapper = null;
-	private SqlSession sqlSession = null;
-	Map<String, Object> map = new HashMap<String, Object>();
-	List<Contract> Contracts = new ArrayList<Contract>();
-
-	@Before
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		contractMapper = sqlSession.getMapper(ContractMapper.class);
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
+public class ContractInterfaceTest {
+	Map<String,Object> map = new HashMap<String,Object>();
+	
 
 	@Test
 	public void insert() {
+		List<Object> Contracts = new ArrayList<Object>();
+		Connect2Contract connect2Contract = new Connect2Contract();
 		Contract a1 = new Contract("10", "aa", new java.sql.Date(
 				new java.util.Date().getTime()), new java.sql.Date(
 				new java.util.Date().getTime()), new BigInteger("10000"),
@@ -50,30 +35,47 @@ public class ContractTest {
 		Contracts.add(a1);
 		Contracts.add(a2);
 		Contracts.add(a3);
-		map.put("Contracts", Contracts);
-		contractMapper.insert(map);
+		connect2Contract.insert(Contracts);
 	}
 
 	@Test
 	public void delete() {
-		map.put("startTime", "2015-05-17");
-		contractMapper.delete(map);
+		Connect2Contract connect2Contract = new Connect2Contract();
+		List<Object> value = new ArrayList<Object>();
+		value.add("10");
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		connect2Contract.delete(value);
 	}
+
 
 	@Test
 	public void find() {
-		map.put("contractType", "0");
-		map.put("start", 0);
-		map.put("size", 10);
-		List<Object> list = contractMapper.find(map);
+		Connect2Contract connect2Contract = new Connect2Contract();
+		List<Object> value = new ArrayList<Object>();
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(0);
+		value.add(10);
+		List<Object> list = connect2Contract.find(value);
 		for (Object s : list) {
 			System.out.println(s);
 		}
 	}
 
 	@Test
-	public void update() {
-		contractMapper.update(new Contract("11000001", "fdsa", new java.sql.Date(
+	public void update(){
+		Connect2Contract connect2Contract = new Connect2Contract();
+		connect2Contract.update(new Contract("11000001", "asd", new java.sql.Date(
 				new java.util.Date().getTime()), new java.sql.Date(
 				new java.util.Date().getTime()), null, null, 1));
 	}

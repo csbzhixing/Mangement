@@ -43,7 +43,7 @@ public class SalaryHistoryTest {
 
 	@Test
 	public void delete() {
-		map.put("id", "123");
+		map.put("ID", "123");
 		salaryHistoryMapper.delete(map);
 	}
 
@@ -52,14 +52,16 @@ public class SalaryHistoryTest {
 		map.put("tax", 0);
 		map.put("start", 0);
 		map.put("size", 10);
-		List<SalaryHistory> list = salaryHistoryMapper.find(map);
-		for (SalaryHistory s : list) {
+		List<Object> list = salaryHistoryMapper.find(map);
+		for (Object s : list) {
 			System.out.println(s);
 		}
 	}
 
 	@Test
 	public void update() {
-		salaryHistoryMapper.update(new SalaryHistory(new java.sql.Date(new java.util.Date().getTime()),"123",null,null,new BigInteger("74"),null,null,null,null));
+		salaryHistoryMapper.update(new SalaryHistory(new java.sql.Date(
+				new java.util.Date().getTime()), "123", null, null,
+				new BigInteger("74"), null, null, null, null));
 	}
 }

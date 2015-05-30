@@ -7,35 +7,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import com.mangement.mybatis.mappers.CompanyInvoiceMapper;
+import com.mangement.mybatis.connections.Connect2CompanyInvoice;
 import com.mangement.mybatis.model.CompanyInvoice;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
 
-public class CompanyInvoiceTest {
-	CompanyInvoiceMapper companyInvoiceMapper = null;
-	private SqlSession sqlSession = null;
+public class CompanyInvoiceInterfaceTest {
 	Map<String,Object> map = new HashMap<String,Object>();
-	List<Object> CompanyInvoices = new ArrayList<Object>();
 	
-	@Before
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		companyInvoiceMapper = sqlSession.getMapper(CompanyInvoiceMapper.class);
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
 
 	@Test
 	public void insert() {
+		List<Object> CompanyInvoices = new ArrayList<Object>();
+		Connect2CompanyInvoice connect2CompanyInvoice = new Connect2CompanyInvoice();
 		CompanyInvoice a1=new CompanyInvoice("11");
 		CompanyInvoice a2=new CompanyInvoice("16");
 		CompanyInvoice a3=new CompanyInvoice("17");
@@ -54,23 +38,34 @@ public class CompanyInvoiceTest {
 		CompanyInvoices.add(a1);
 		CompanyInvoices.add(a2);
 		CompanyInvoices.add(a3);
-		map.put("CompanyInvoices", CompanyInvoices);
-		companyInvoiceMapper.insert(map);
+		connect2CompanyInvoice.insert(CompanyInvoices);
 	}
 
 	@Test
 	public void delete() {
-		map.put("date", new java.sql.Date(new java.util.Date().getTime()));
-		companyInvoiceMapper.delete(map);
+		Connect2CompanyInvoice connect2CompanyInvoice = new Connect2CompanyInvoice();
+		List<Object> value = new ArrayList<Object>();
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(new java.sql.Date(new java.util.Date().getTime()));
+		value.add(null);
+		connect2CompanyInvoice.delete(value);
 	}
 
 
 	@Test
 	public void find() {
-		map.put("type", "0");
-		map.put("start", 0);
-		map.put("size", 10);
-		List<Object> list = companyInvoiceMapper.find(map);
+		Connect2CompanyInvoice connect2CompanyInvoice = new Connect2CompanyInvoice();
+		List<Object> value = new ArrayList<Object>();
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(null);
+		value.add(0);
+		value.add(10);
+		List<Object> list = connect2CompanyInvoice.find(value);
 		for (Object s : list) {
 			System.out.println(s);
 		}
@@ -78,6 +73,7 @@ public class CompanyInvoiceTest {
 
 	@Test
 	public void update(){
-		companyInvoiceMapper.update(new CompanyInvoice("20000001","11000002",new BigInteger("100"),null,0));
+		Connect2CompanyInvoice connect2CompanyInvoice = new Connect2CompanyInvoice();
+		connect2CompanyInvoice.update(new CompanyInvoice("20000001","11000002",new BigInteger("100"),null,1));
 	}
 }
