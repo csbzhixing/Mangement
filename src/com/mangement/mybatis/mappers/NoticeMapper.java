@@ -10,5 +10,6 @@ public interface NoticeMapper {
 	public void insert(Map<String,Object> map);
 	public void delete(Map<String,Object> map);
 	public List<Notice> find(Map<String,Object> map);
+	public List<Notice> findByID(String ID);
 	public void update(Notice notice);
 }

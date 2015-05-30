@@ -2,8 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mangement.mybatis.mappers.SalaryCurrentMapper">
-	<resultMap type="SalaryCurrent" id="SalaryCurrentResult">
+<mapper namespace="com.mangement.mybatis.mappers.SalaryHistoryMapper">
+	<resultMap type="SalaryHistory" id="SalaryHistoryResult">
+		<id property="payoffDate" column="payoffDate" />
 		<id property="ID" column="ID" />
 		<result property="basicSalary" column="basicSalary" />
 		<result property="livingAllowance" column="livingAllowance" />
@@ -11,31 +12,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="attendanceAward" column="attendanceAward" />
 		<result property="socialSecurity" column="socialSecurity" />
 		<result property="tax" column="tax" />
+		<result property="totalSalary" column="totalSalary" />
 		
 		<association property="user" column="ID" select="com.mangement.mybatis.mappers.UserMapper.findByID"></association>
 	</resultMap>
 
 
 	<insert id="insert" parameterType="Map">
-		insert into salarycurrent
+		insert into salaryhistory
 		values
-		<foreach item="SalaryCurrent" collection="SalaryCurrents"
+		<foreach item="SalaryHistory" collection="SalaryHistorys"
 			separator=",">
-			(#{SalaryCurrent.ID},
-			#{SalaryCurrent.basicSalary},
-			#{SalaryCurrent.livingAllowance},
-			#{SalaryCurrent.workDay},
-			#{SalaryCurrent.attendanceAward},
-			#{SalaryCurrent.socialSecurity},
-			#{SalaryCurrent.tax})
+			(#{SalaryHistory.payoffDate},
+			#{SalaryHistory.ID},
+			#{SalaryHistory.basicSalary},
+			#{SalaryHistory.livingAllowance},
+			#{SalaryHistory.workDay},
+			#{SalaryHistory.attendanceAward},
+			#{SalaryHistory.socialSecurity},
+			#{SalaryHistory.tax},
+			#{SalaryHistory.totalSalary})
 		</foreach>
 	</insert>
 
 	<delete id="delete" parameterType="Map">
-		delete from salarycurrent
+		delete from salaryhistory
 		<where>
+			<if test="payoffDate!=null">
+				and payoffDate = #{payoffDate}
+			</if>
 			<if test="ID!=null">
-				and ID=#{ID}
+				and ID like #{ID}
 			</if>
 			<if test="basicSalary!=null">
 				and basicSalary = #{basicSalary}
@@ -54,19 +61,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="tax!=null">
 				and tax = #{tax}
+			</if>
+			<if test="totalSalary!=null">
+				and totalSalary = #{totalSalary}
 			</if>
 		</where>
 	</delete>
 
-	<select id="findByID" parameterType="String" resultMap="SalaryCurrentResult">
-		select * from salarycurrent where ID=#{ID}
+	<select id="findByID" parameterType="String" resultMap="SalaryHistoryResult">
+		select * from salaryhistory where ID=#{ID}
 	</select>
 
-	<select id="find" parameterType="Map" resultMap="SalaryCurrentResult">
-		select * from salarycurrent
+	<select id="find" parameterType="Map" resultMap="SalaryHistoryResult">
+		select * from salaryhistory
 		<where>
+			<if test="payoffDate!=null">
+				and payoffDate = #{payoffDate}
+			</if>
 			<if test="ID!=null">
-				and ID=#{ID}
+				and ID like #{ID}
 			</if>
 			<if test="basicSalary!=null">
 				and basicSalary = #{basicSalary}
@@ -85,6 +98,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="tax!=null">
 				and tax = #{tax}
+			</if>
+			<if test="totalSalary!=null">
+				and totalSalary = #{totalSalary}
 			</if>
 		</where>
 		<if test="start!=null and size!=null">
@@ -92,8 +108,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>
 
-	<update id="update" parameterType="SalaryCurrent">
-		update salarycurrent
+	<update id="update" parameterType="SalaryHistory">
+		update salaryhistory
 		<set>
 			<if test="basicSalary!=null">
 				basicSalary = #{basicSalary},
@@ -111,10 +127,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				socialSecurity = #{socialSecurity},
 			</if>
 			<if test="tax!=null">
-				tax = #{tax}
+				tax = #{tax},
+			</if>
+			<if test="totalSalary!=null">
+				totalSalary = #{totalSalary}
 			</if>
 		</set>
-		where ID like #{ID}
+		where payoffDate = #{payoffDate} and ID like #{ID}
 	</update>
 
 </mapper> 

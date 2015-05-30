@@ -3,7 +3,6 @@ package com.mangement.test;
 
 import java.util.ArrayList;
 import java.math.BigInteger;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,9 +42,9 @@ public class CompanyInvoiceTest {
 		a1.setContractID("11000001");
 		a2.setContractID("11000002");
 		a3.setContractID("11000003");
-		a1.setDate(new Date(new java.util.Date().getTime()));
-		a2.setDate(new Date(new java.util.Date().getTime()));
-		a3.setDate(new Date(new java.util.Date().getTime()));
+		a1.setDate(new java.sql.Date(new java.util.Date().getTime()));
+		a2.setDate(new java.sql.Date(new java.util.Date().getTime()));
+		a3.setDate(new java.sql.Date(new java.util.Date().getTime()));
 		a1.setPayment(new BigInteger("100"));
 		a2.setPayment(new BigInteger("200"));
 		a3.setPayment(new BigInteger("300"));
@@ -68,7 +67,9 @@ public class CompanyInvoiceTest {
 
 	@Test
 	public void find() {
-		map.put("type", "1");
+		map.put("type", "0");
+		map.put("start", 0);
+		map.put("size", 10);
 		List<CompanyInvoice> list = companyInvoiceMapper.find(map);
 		for (CompanyInvoice s : list) {
 			System.out.println(s);

@@ -2,6 +2,7 @@ package com.mangement.mybatis.model;
 
 import java.math.BigInteger;
 import java.sql.Date;
+import java.util.List;
 
 
 
@@ -13,6 +14,7 @@ public class Contract {
 	private BigInteger totalPayment;
 	private BigInteger unpayment;
 	private Integer contractType;
+	private List<CompanyInvoice> companyInvoice;
 	
 	
 	
@@ -50,7 +52,8 @@ public class Contract {
 		return "Contract [contractID=" + contractID + ", name=" + name
 				+ ", startTime=" + startTime + ", finishTime=" + finishTime
 				+ ", totalPayment=" + totalPayment + ", unpayment=" + unpayment
-				+ ", contractType=" + contractType + "]";
+				+ ", contractType=" + contractType + ", companyInvoice="
+				+ companyInvoice + "]";
 	}
 
 
@@ -135,6 +138,18 @@ public class Contract {
 
 	public void setContractType(Integer contractType) {
 		this.contractType = contractType;
+	}
+
+
+
+	public List<CompanyInvoice> getCompanyInvoice() {
+		return companyInvoice;
+	}
+
+
+
+	public void setCompanyInvoice(List<CompanyInvoice> companyInvoice) {
+		this.companyInvoice = companyInvoice;
 	}
 
 

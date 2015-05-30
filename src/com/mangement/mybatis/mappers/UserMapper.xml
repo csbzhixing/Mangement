@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mangement.mybatis.mappers.UserMapper">
+	<resultMap type="User" id="UserResult">
+		<id property="ID" column="ID" />
+		<result property="password" column="password" />
+		<result property="authority" column="authority" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="birthday" column="birthday" />
+		<result property="address" column="address" />
+		<result property="phone" column="phone" />
+		<result property="position" column="position" />
+		<result property="IDcard" column="IDcard" />
+		
+		<collection property="notice" column="ID" select="com.mangement.mybatis.mappers.NoticeMapper.findByID"></collection>
+		<collection property="reim" column="ID" select="com.mangement.mybatis.mappers.ReimMapper.findByID"></collection>
+		<collection property="salaryHistory" column="ID" select="com.mangement.mybatis.mappers.SalaryHistoryMapper.findByID"></collection>
+		<collection property="salaryCurrent" column="ID" select="com.mangement.mybatis.mappers.SalaryCurrentMapper.findByID"></collection>
+	</resultMap>
+
+
+	<insert id="insert" parameterType="Map">
+		insert into user
+		values
+		<foreach item="User" collection="Users"
+			separator=",">
+			(#{User.ID},
+			#{User.password},
+			#{User.authority},
+			#{User.name},
+			#{User.sex},
+			#{User.birthday},
+			#{User.address},
+			#{User.phone},
+			#{User.position},
+			#{User.IDcard})
+		</foreach>
+	</insert>
+
+	<delete id="delete" parameterType="Map">
+		delete from user
+		<where>
+			<if test="ID!=null">
+				and ID like #{ID}
+			</if>
+			<if test="password!=null">
+				and password like #{password}
+			</if>
+			<if test="authority!=null">
+				and authority = #{authority}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="sex!=null">
+				and sex like #{sex}
+			</if>
+			<if test="birthday!=null">
+				and birthday like #{birthday}
+			</if>
+			<if test="address!=null">
+				and address like #{address}
+			</if>
+			<if test="phone!=null">
+				and phone like #{phone}
+			</if>
+			<if test="position!=null">
+				and position like #{position}
+			</if>
+			<if test="IDcard!=null">
+				and IDcard like #{IDcard}
+			</if>
+		</where>
+	</delete>
+
+	<select id="findByID" parameterType="String" resultMap="UserResult">
+		select * from user where ID like #{ID}
+	</select>
+	
+	<select id="find" parameterType="Map" resultMap="UserResult">
+		select * from user
+		<where>
+			<if test="ID!=null">
+				and ID like #{ID}
+			</if>
+			<if test="password!=null">
+				and password like #{password}
+			</if>
+			<if test="authority!=null">
+				and authority = #{authority}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="sex!=null">
+				and sex like #{sex}
+			</if>
+			<if test="birthday!=null">
+				and birthday like #{birthday}
+			</if>
+			<if test="address!=null">
+				and address like #{address}
+			</if>
+			<if test="phone!=null">
+				and phone like #{phone}
+			</if>
+			<if test="position!=null">
+				and position like #{position}
+			</if>
+			<if test="IDcard!=null">
+				and IDcard like #{IDcard}
+			</if>
+		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+
+	<update id="update" parameterType="User">
+		update user
+		<set>
+			<if test="password!=null">
+				password=#{password},
+			</if>
+			<if test="authority!=null">
+				authority= #{authority},
+			</if>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="sex!=null">
+				sex=#{sex},
+			</if>
+			<if test="birthday!=null">
+				birthday=#{birthday},
+			</if>
+			<if test="address!=null">
+				address=#{address},
+			</if>
+			<if test="phone!=null">
+				phone=#{phone},
+			</if>
+			<if test="position!=null">
+				position=#{position},
+			</if>
+			<if test="IDcard!=null">
+				IDcard=#{IDcard}
+			</if>
+		</set>
+		where ID like #{ID}
+	</update>
+
+</mapper> 

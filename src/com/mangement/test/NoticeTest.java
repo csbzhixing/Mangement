@@ -1,7 +1,6 @@
 package com.mangement.test;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +48,8 @@ public class NoticeTest {
 	@Test
 	public void find() {
 		map.put("noticeID", "1");
+		map.put("start", 0);
+		map.put("size", 10);
 		List<Notice> list = noticeMapper.find(map);
 		for (Notice s : list) {
 			System.out.println(s);
@@ -57,6 +58,6 @@ public class NoticeTest {
 
 	@Test
 	public void update() {
-		noticeMapper.update(new Notice("3","20150003","bye",new Date(),0));
+		noticeMapper.update(new Notice("3","20150003","bye",new java.sql.Date(new java.util.Date().getTime()),0));
 	}
 }

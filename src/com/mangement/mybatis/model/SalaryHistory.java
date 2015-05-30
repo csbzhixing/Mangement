@@ -1,9 +1,11 @@
 package com.mangement.mybatis.model;
 
 import java.math.BigInteger;
+import java.sql.Date;
 
-public class SalaryCurrent {
+public class SalaryHistory {
 
+	private Date payoffDate;
 	private String ID;
 	private BigInteger basicSalary;
 	private BigInteger livingAllowance;
@@ -11,23 +13,26 @@ public class SalaryCurrent {
 	private BigInteger attendanceAward;
 	private BigInteger socialSecurity;
 	private BigInteger tax;
+	private BigInteger totalSalary;
 	private User user;
 	
-	public SalaryCurrent() {
+	public SalaryHistory() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public SalaryCurrent(String iD) {
+	public SalaryHistory(Date payoffDate, String iD) {
 		super();
+		this.payoffDate = payoffDate;
 		ID = iD;
 	}
 
-	public SalaryCurrent(String iD, BigInteger basicSalary,
+	public SalaryHistory(Date payoffDate, String iD, BigInteger basicSalary,
 			BigInteger livingAllowance, BigInteger workDay,
 			BigInteger attendanceAward, BigInteger socialSecurity,
-			BigInteger tax) {
+			BigInteger tax, BigInteger totalSalary) {
 		super();
+		this.payoffDate = payoffDate;
 		ID = iD;
 		this.basicSalary = basicSalary;
 		this.livingAllowance = livingAllowance;
@@ -35,15 +40,27 @@ public class SalaryCurrent {
 		this.attendanceAward = attendanceAward;
 		this.socialSecurity = socialSecurity;
 		this.tax = tax;
+		this.totalSalary = totalSalary;
 	}
+
 
 
 	@Override
 	public String toString() {
-		return "SalaryCurrent [ID=" + ID + ", basicSalary=" + basicSalary
-				+ ", livingAllowance=" + livingAllowance + ", workDay="
-				+ workDay + ", attendanceAward=" + attendanceAward
-				+ ", socialSecurity=" + socialSecurity + ", tax=" + tax + "]";
+		return "SalaryHistory [payoffDate=" + payoffDate + ", ID=" + ID
+				+ ", basicSalary=" + basicSalary + ", livingAllowance="
+				+ livingAllowance + ", workDay=" + workDay
+				+ ", attendanceAward=" + attendanceAward + ", socialSecurity="
+				+ socialSecurity + ", tax=" + tax + ", totalSalary="
+				+ totalSalary + "]";
+	}
+
+	public Date getPayoffDate() {
+		return payoffDate;
+	}
+
+	public void setPayoffDate(Date payoffDate) {
+		this.payoffDate = payoffDate;
 	}
 
 	public String getID() {
@@ -102,6 +119,14 @@ public class SalaryCurrent {
 		this.tax = tax;
 	}
 
+	public BigInteger getTotalSalary() {
+		return totalSalary;
+	}
+
+	public void setTotalSalary(BigInteger totalSalary) {
+		this.totalSalary = totalSalary;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -109,6 +134,5 @@ public class SalaryCurrent {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
 }

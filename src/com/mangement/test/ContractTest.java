@@ -2,7 +2,6 @@ package com.mangement.test;
 
 import java.util.ArrayList;
 import java.math.BigInteger;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,15 +35,18 @@ public class ContractTest {
 
 	@Test
 	public void insert() {
-		Contract a1 = new Contract("10", "aa", new Date(
-				new java.util.Date().getTime()), new Date(
-				new java.util.Date().getTime()), new BigInteger("10000"), new BigInteger("1000"), 6);
-		Contract a2 = new Contract("12", "bb", new Date(
-				new java.util.Date().getTime()), new Date(
-				new java.util.Date().getTime()), new BigInteger("20000"), new BigInteger("2000"), 3);
-		Contract a3 = new Contract("13", "cc", new Date(
-				new java.util.Date().getTime()), new Date(
-				new java.util.Date().getTime()), new BigInteger("30000"), new BigInteger("3000"), 5);
+		Contract a1 = new Contract("10", "aa", new java.sql.Date(
+				new java.util.Date().getTime()), new java.sql.Date(
+				new java.util.Date().getTime()), new BigInteger("10000"),
+				new BigInteger("1000"), 6);
+		Contract a2 = new Contract("12", "bb", new java.sql.Date(
+				new java.util.Date().getTime()), new java.sql.Date(
+				new java.util.Date().getTime()), new BigInteger("20000"),
+				new BigInteger("2000"), 3);
+		Contract a3 = new Contract("13", "cc", new java.sql.Date(
+				new java.util.Date().getTime()), new java.sql.Date(
+				new java.util.Date().getTime()), new BigInteger("30000"),
+				new BigInteger("3000"), 5);
 		Contracts.add(a1);
 		Contracts.add(a2);
 		Contracts.add(a3);
@@ -60,7 +62,9 @@ public class ContractTest {
 
 	@Test
 	public void find() {
-		map.put("startTime", "2015-05-17");
+		map.put("contractType", "0");
+		map.put("start", 0);
+		map.put("size", 10);
 		List<Contract> list = contractMapper.find(map);
 		for (Contract s : list) {
 			System.out.println(s);
@@ -69,8 +73,8 @@ public class ContractTest {
 
 	@Test
 	public void update() {
-		contractMapper.update(new Contract("13", "fdsa", new Date(
-				new java.util.Date().getTime()), new Date(
+		contractMapper.update(new Contract("13", "fdsa", new java.sql.Date(
+				new java.util.Date().getTime()), new java.sql.Date(
 				new java.util.Date().getTime()), null, null, null));
 	}
 }

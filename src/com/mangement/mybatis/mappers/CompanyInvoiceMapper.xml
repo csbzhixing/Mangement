@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="payment" column="payment" />
 		<result property="date" column="Date" />
 		<result property="type" column="type" />
+		<association property="contract" column="contractID" select="com.mangement.mybatis.mappers.ContractMapper.findByID"></association>
 	</resultMap>
 
 
@@ -46,6 +47,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</delete>
 
+	<select id="findByContractID" parameterType="String" resultMap="CompanyInvoiceResult">
+		select * from companyinvoice where contractID like #{contractID}
+	</select>
 
 	<select id="find" parameterType="Map" resultMap="CompanyInvoiceResult">
 		select * from companyinvoice
@@ -66,6 +70,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and type = #{type}
 			</if>
 		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
 	</select>
 
 	<update id="update" parameterType="CompanyInvoice">

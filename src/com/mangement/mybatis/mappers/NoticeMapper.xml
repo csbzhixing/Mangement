@@ -9,6 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="content" column="content" />
 		<result property="date" column="date" />
 		<result property="isread" column="isread" />
+		
+		<association property="user" column="ID" select="com.mangement.mybatis.mappers.UserMapper.findByID"></association>
 	</resultMap>
 
 
@@ -45,6 +47,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</delete>
 
+	<select id="findByID" parameterType="String" resultMap="NoticeResult">
+		select * from notice where ID like #{ID}
+	</select>
 
 	<select id="find" parameterType="Map" resultMap="NoticeResult">
 		select * from notice
@@ -65,6 +70,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and isread = #{isread}
 			</if>
 		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
 	</select>
 
 	<update id="update" parameterType="Notice">

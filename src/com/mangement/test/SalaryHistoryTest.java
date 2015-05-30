@@ -11,20 +11,20 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mangement.mybatis.mappers.SalaryCurrentMapper;
-import com.mangement.mybatis.model.SalaryCurrent;
+import com.mangement.mybatis.mappers.SalaryHistoryMapper;
+import com.mangement.mybatis.model.SalaryHistory;
 import com.mangement.mybatis.util.SqlSessionFactoryUtil;
 
-public class SalaryCurrentTest {
-	SalaryCurrentMapper salaryCurrentMapper = null;
+public class SalaryHistoryTest {
+	SalaryHistoryMapper salaryHistoryMapper = null;
 	private SqlSession sqlSession = null;
 	Map<String, Object> map = new HashMap<String, Object>();
-	List<SalaryCurrent> SalaryCurrents = new ArrayList<SalaryCurrent>();
+	List<SalaryHistory> SalaryHistorys = new ArrayList<SalaryHistory>();
 
 	@Before
 	public void setUp() throws Exception {
 		sqlSession = SqlSessionFactoryUtil.openSession();
-		salaryCurrentMapper = sqlSession.getMapper(SalaryCurrentMapper.class);
+		salaryHistoryMapper = sqlSession.getMapper(SalaryHistoryMapper.class);
 	}
 
 	@After
@@ -35,16 +35,16 @@ public class SalaryCurrentTest {
 
 	@Test
 	public void insert() {
-		SalaryCurrent a1 = new SalaryCurrent("123");
-		SalaryCurrents.add(a1);
-		map.put("SalaryCurrents", SalaryCurrents);
-		salaryCurrentMapper.insert(map);
+		SalaryHistory a1 = new SalaryHistory(new java.sql.Date(new java.util.Date().getTime()),"123");
+		SalaryHistorys.add(a1);
+		map.put("SalaryHistorys", SalaryHistorys);
+		salaryHistoryMapper.insert(map);
 	}
 
 	@Test
 	public void delete() {
 		map.put("id", "123");
-		salaryCurrentMapper.delete(map);
+		salaryHistoryMapper.delete(map);
 	}
 
 	@Test
@@ -52,14 +52,14 @@ public class SalaryCurrentTest {
 		map.put("tax", 0);
 		map.put("start", 0);
 		map.put("size", 10);
-		List<SalaryCurrent> list = salaryCurrentMapper.find(map);
-		for (SalaryCurrent s : list) {
+		List<SalaryHistory> list = salaryHistoryMapper.find(map);
+		for (SalaryHistory s : list) {
 			System.out.println(s);
 		}
 	}
 
 	@Test
 	public void update() {
-		salaryCurrentMapper.update(new SalaryCurrent("20150001",null,null,new BigInteger("33"),null,null,null));
+		salaryHistoryMapper.update(new SalaryHistory(new java.sql.Date(new java.util.Date().getTime()),"123",null,null,new BigInteger("74"),null,null,null,null));
 	}
 }
