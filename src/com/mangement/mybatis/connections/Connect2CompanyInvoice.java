@@ -4,113 +4,75 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.mangement.mybatis.mappers.CompanyInvoiceMapper;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
+import com.mangement.mybatis.model.CompanyInvoice;
 
-public class Connect2CompanyInvoice implements ModelInterface{
+public class Connect2CompanyInvoice extends SessionOpener {
 
 	private CompanyInvoiceMapper companyInvoiceMapper = null;
-	private SqlSession sqlSession = null;
-	private String keys[] = {"cInvoiceID","contractID","payment","date","type","start","size"};
-	
+
 	public Connect2CompanyInvoice() {
 		super();
 	}
 
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		companyInvoiceMapper = sqlSession.getMapper(CompanyInvoiceMapper.class);		
-	}
-
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
-	
-	@Override
-	public void insert(List<Object> list) {
+	public void insert(List<CompanyInvoice> list){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("CompanyInvoices", list);
-		companyInvoiceMapper.insert(map);
-		try {
+			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("CompanyInvoices", list);
+			companyInvoiceMapper.insert(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public void delete(List<Object> list){
+	public void delete(CompanyInvoice model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		companyInvoiceMapper.delete(map);
-		
-		try {
+			companyInvoiceMapper.delete(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public List<Object> find(List<Object> list) {
+	public List<CompanyInvoice> find(CompanyInvoice model,Integer start,Integer size){
+		List<CompanyInvoice> list = null;
 		try {
-			setUp();
-		} catch (Exception e) {
-			return null;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		List<Object> companyInvoice = companyInvoiceMapper.find(map);
-		try {
+			if(start!=null && size!=null){
+				map.put("start", start);
+				map.put("size", size);
+			}
+			list = companyInvoiceMapper.find(map);
 			tearDown();
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
 		}
-		return companyInvoice;
+		return list;
 	}
 
-	@Override
-	public void update(Object object) {
+	public void update(CompanyInvoice model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		companyInvoiceMapper.update(object);
-		
-		try {
+			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
+			companyInvoiceMapper.update(model);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
-
 
 }

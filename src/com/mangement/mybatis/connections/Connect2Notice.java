@@ -4,113 +4,75 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.mangement.mybatis.mappers.NoticeMapper;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
+import com.mangement.mybatis.model.Notice;
 
-public class Connect2Notice implements ModelInterface{
+public class Connect2Notice extends SessionOpener {
 
 	private NoticeMapper noticeMapper = null;
-	private SqlSession sqlSession = null;
-	private String keys[] = {"noticeID","ID","content","date","isread","start","size"};
-	
+
 	public Connect2Notice() {
 		super();
 	}
 
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		noticeMapper = sqlSession.getMapper(NoticeMapper.class);		
-	}
-
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
-	
-	@Override
-	public void insert(List<Object> list) {
+	public void insert(List<Notice> list){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("Notices", list);
-		noticeMapper.insert(map);
-		try {
+			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("Notices", list);
+			noticeMapper.insert(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public void delete(List<Object> list){
+	public void delete(Notice model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		noticeMapper.delete(map);
-		
-		try {
+			noticeMapper.delete(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public List<Object> find(List<Object> list) {
+	public List<Notice> find(Notice model,Integer start,Integer size){
+		List<Notice> list = null;
 		try {
-			setUp();
-		} catch (Exception e) {
-			return null;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		List<Object> contract = noticeMapper.find(map);
-		try {
+			if(start!=null && size!=null){
+				map.put("start", start);
+				map.put("size", size);
+			}
+			list = noticeMapper.find(map);
 			tearDown();
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
 		}
-		return contract;
+		return list;
 	}
 
-	@Override
-	public void update(Object object) {
+	public void update(Notice model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		noticeMapper.update(object);
-		
-		try {
+			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
+			noticeMapper.update(model);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
-
 
 }

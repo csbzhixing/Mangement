@@ -70,8 +70,8 @@ public class CompanyInvoiceTest {
 		map.put("type", "0");
 		map.put("start", 0);
 		map.put("size", 10);
-		List<Object> list = companyInvoiceMapper.find(map);
-		for (Object s : list) {
+		List<CompanyInvoice> list = companyInvoiceMapper.find(map);
+		for (CompanyInvoice s : list) {
 			System.out.println(s);
 		}
 	}

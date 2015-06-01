@@ -4,113 +4,74 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.mangement.mybatis.mappers.UserMapper;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
+import com.mangement.mybatis.model.User;
 
-public class Connect2User implements ModelInterface {
+public class Connect2User extends SessionOpener {
 
 	private UserMapper userMapper = null;
-	private SqlSession sqlSession = null;
-	private String keys[] = { "ID", "password", "authority",
-			"name", "sex", "birthday", "address","phone","position","IDcard","start",
-			"size" };
 
 	public Connect2User() {
 		super();
 	}
 
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		userMapper = sqlSession.getMapper(UserMapper.class);
-	}
-
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
-
-	@Override
-	public void insert(List<Object> list) {
+	public void insert(List<User> list){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("Users", list);
-		userMapper.insert(map);
-		try {
+			userMapper = (UserMapper) setUp(UserMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("Users", list);
+			userMapper.insert(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public void delete(List<Object> list) {
+	public void delete(User model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		int i = 0;
-		for (Object object : list) {
-			if (object != null) {
-				map.put(keys[i], object);
+			userMapper = (UserMapper) setUp(UserMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		userMapper.delete(map);
-
-		try {
+			userMapper.delete(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public List<Object> find(List<Object> list) {
+	public List<User> find(User model,Integer start,Integer size){
+		List<User> list = null;
 		try {
-			setUp();
-		} catch (Exception e) {
-			return null;
-		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		int i = 0;
-		for (Object object : list) {
-			if (object != null) {
-				map.put(keys[i], object);
+			userMapper = (UserMapper) setUp(UserMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		List<Object> contract = userMapper.find(map);
-		try {
+			if(start!=null && size!=null){
+				map.put("start", start);
+				map.put("size", size);
+			}
+			list = userMapper.find(map);
 			tearDown();
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
 		}
-		return contract;
+		return list;
 	}
 
-	@Override
-	public void update(Object object) {
+	public void update(User model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-
-		userMapper.update(object);
-
-		try {
+			userMapper = (UserMapper) setUp(UserMapper.class);
+			userMapper.update(model);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 

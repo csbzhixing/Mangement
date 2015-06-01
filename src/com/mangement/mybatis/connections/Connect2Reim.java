@@ -4,113 +4,75 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.mangement.mybatis.mappers.ReimMapper;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
+import com.mangement.mybatis.model.Reim;
 
-public class Connect2Reim implements ModelInterface{
+public class Connect2Reim extends SessionOpener {
 
 	private ReimMapper reimMapper = null;
-	private SqlSession sqlSession = null;
-	private String keys[] = {"ID","pInvoiceID","isread","date","goods","number","unitPrice","remark","start","size"};
-	
+
 	public Connect2Reim() {
 		super();
 	}
 
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		reimMapper = sqlSession.getMapper(ReimMapper.class);		
-	}
-
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
-	
-	@Override
-	public void insert(List<Object> list) {
+	public void insert(List<Reim> list){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("Reims", list);
-		reimMapper.insert(map);
-		try {
+			reimMapper = (ReimMapper) setUp(ReimMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("Reims", list);
+			reimMapper.insert(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public void delete(List<Object> list){
+	public void delete(Reim model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			reimMapper = (ReimMapper) setUp(ReimMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		reimMapper.delete(map);
-		
-		try {
+			reimMapper.delete(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public List<Object> find(List<Object> list) {
+	public List<Reim> find(Reim model,Integer start,Integer size){
+		List<Reim> list = null;
 		try {
-			setUp();
-		} catch (Exception e) {
-			return null;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			reimMapper = (ReimMapper) setUp(ReimMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		List<Object> contract = reimMapper.find(map);
-		try {
+			if(start!=null && size!=null){
+				map.put("start", start);
+				map.put("size", size);
+			}
+			list = reimMapper.find(map);
 			tearDown();
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
 		}
-		return contract;
+		return list;
 	}
 
-	@Override
-	public void update(Object object) {
+	public void update(Reim model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		reimMapper.update(object);
-		
-		try {
+			reimMapper = (ReimMapper) setUp(ReimMapper.class);
+			reimMapper.update(model);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
-
 
 }

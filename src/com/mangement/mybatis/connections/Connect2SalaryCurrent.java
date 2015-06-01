@@ -4,113 +4,74 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.mangement.mybatis.mappers.SalaryCurrentMapper;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
+import com.mangement.mybatis.model.SalaryCurrent;
 
-public class Connect2SalaryCurrent implements ModelInterface {
+public class Connect2SalaryCurrent extends SessionOpener {
 
 	private SalaryCurrentMapper salaryCurrentMapper = null;
-	private SqlSession sqlSession = null;
-	private String keys[] = { "ID", "basicSalary", "livingAllowance",
-			"workDay", "attendanceAward", "socialSecurity", "tax", "start",
-			"size" };
 
 	public Connect2SalaryCurrent() {
 		super();
 	}
 
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		salaryCurrentMapper = sqlSession.getMapper(SalaryCurrentMapper.class);
-	}
-
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
-
-	@Override
-	public void insert(List<Object> list) {
+	public void insert(List<SalaryCurrent> list){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("SalaryCurrents", list);
-		salaryCurrentMapper.insert(map);
-		try {
+			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("SalaryCurrents", list);
+			salaryCurrentMapper.insert(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public void delete(List<Object> list) {
+	public void delete(SalaryCurrent model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		int i = 0;
-		for (Object object : list) {
-			if (object != null) {
-				map.put(keys[i], object);
+			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		salaryCurrentMapper.delete(map);
-
-		try {
+			salaryCurrentMapper.delete(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public List<Object> find(List<Object> list) {
+	public List<SalaryCurrent> find(SalaryCurrent model,Integer start,Integer size){
+		List<SalaryCurrent> list = null;
 		try {
-			setUp();
-		} catch (Exception e) {
-			return null;
-		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		int i = 0;
-		for (Object object : list) {
-			if (object != null) {
-				map.put(keys[i], object);
+			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		List<Object> contract = salaryCurrentMapper.find(map);
-		try {
+			if(start!=null && size!=null){
+				map.put("start", start);
+				map.put("size", size);
+			}
+			list = salaryCurrentMapper.find(map);
 			tearDown();
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
 		}
-		return contract;
+		return list;
 	}
 
-	@Override
-	public void update(Object object) {
+	public void update(SalaryCurrent model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-
-		salaryCurrentMapper.update(object);
-
-		try {
+			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
+			salaryCurrentMapper.update(model);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 

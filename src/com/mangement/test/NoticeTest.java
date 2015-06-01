@@ -50,8 +50,8 @@ public class NoticeTest {
 		map.put("noticeID", "1");
 		map.put("start", 0);
 		map.put("size", 10);
-		List<Object> list = noticeMapper.find(map);
-		for (Object s : list) {
+		List<Notice> list = noticeMapper.find(map);
+		for (Notice s : list) {
 			System.out.println(s);
 		}
 	}

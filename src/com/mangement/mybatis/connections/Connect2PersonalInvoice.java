@@ -4,113 +4,75 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.mangement.mybatis.mappers.PersonalInvoiceMapper;
-import com.mangement.mybatis.util.SqlSessionFactoryUtil;
+import com.mangement.mybatis.model.PersonalInvoice;
 
-public class Connect2PersonalInvoice implements ModelInterface{
+public class Connect2PersonalInvoice extends SessionOpener {
 
 	private PersonalInvoiceMapper personalInvoiceMapper = null;
-	private SqlSession sqlSession = null;
-	private String keys[] = {"pInvoiceID","payment","date","start","size"};
-	
+
 	public Connect2PersonalInvoice() {
 		super();
 	}
 
-	public void setUp() throws Exception {
-		sqlSession = SqlSessionFactoryUtil.openSession();
-		personalInvoiceMapper = sqlSession.getMapper(PersonalInvoiceMapper.class);		
-	}
-
-	public void tearDown() throws Exception {
-		sqlSession.commit();
-		sqlSession.close();
-	}
-	
-	@Override
-	public void insert(List<Object> list) {
+	public void insert(List<PersonalInvoice> list){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("PersonalInvoices", list);
-		personalInvoiceMapper.insert(map);
-		try {
+			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("PersonalInvoices", list);
+			personalInvoiceMapper.insert(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public void delete(List<Object> list){
+	public void delete(PersonalInvoice model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		personalInvoiceMapper.delete(map);
-		
-		try {
+			personalInvoiceMapper.delete(map);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public List<Object> find(List<Object> list) {
+	public List<PersonalInvoice> find(PersonalInvoice model,Integer start,Integer size){
+		List<PersonalInvoice> list = null;
 		try {
-			setUp();
-		} catch (Exception e) {
-			return null;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		int i=0;
-		for(Object object : list){
-			if(object!=null){
-				map.put(keys[i], object);
+			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(Map.Entry<String,Object> column : model.getMap().entrySet()){
+				if(column.getValue()!=null){
+					map.put(column.getKey(), column.getValue());
+				}
 			}
-			i++;
-		}
-		List<Object> contract = personalInvoiceMapper.find(map);
-		try {
+			if(start!=null && size!=null){
+				map.put("start", start);
+				map.put("size", size);
+			}
+			list = personalInvoiceMapper.find(map);
 			tearDown();
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
 		}
-		return contract;
+		return list;
 	}
 
-	@Override
-	public void update(Object object) {
+	public void update(PersonalInvoice model){
 		try {
-			setUp();
-		} catch (Exception e) {
-			return;
-		}
-		
-		personalInvoiceMapper.update(object);
-		
-		try {
+			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
+			personalInvoiceMapper.update(model);
 			tearDown();
 		} catch (Exception e) {
-			return;
+			e.printStackTrace();
 		}
 	}
-
 
 }

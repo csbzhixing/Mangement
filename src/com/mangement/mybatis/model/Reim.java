@@ -2,8 +2,8 @@ package com.mangement.mybatis.model;
 
 import java.math.BigInteger;
 import java.sql.Date;
-
-
+import java.util.HashMap;
+import java.util.Map;
 
 public class Reim {
 
@@ -17,19 +17,18 @@ public class Reim {
 	private String remark;
 	private User user;
 	private PersonalInvoice personalInvoice;
+	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public Reim() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public Reim(String iD, String pInvoiceID) {
 		super();
 		ID = iD;
 		this.pInvoiceID = pInvoiceID;
 	}
-
 
 	public Reim(String iD, String pInvoiceID, Integer isread, Date date,
 			String goods, BigInteger number, BigInteger unitPrice, String remark) {
@@ -49,14 +48,12 @@ public class Reim {
 		return "Reim [ID=" + ID + ", pInvoiceID=" + pInvoiceID + ", isread="
 				+ isread + ", date=" + date + ", goods=" + goods + ", number="
 				+ number + ", unitPrice=" + unitPrice + ", remark=" + remark
-				+ ", personalInvoice=" + personalInvoice
-				+ "]";
+				+ ", user=" + user + "]";
 	}
 
 	public String getID() {
 		return ID;
 	}
-
 
 	public void setID(String iD) {
 		ID = iD;
@@ -66,90 +63,84 @@ public class Reim {
 		return pInvoiceID;
 	}
 
-
 	public void setpInvoiceID(String pInvoiceID) {
 		this.pInvoiceID = pInvoiceID;
 	}
-
 
 	public Integer getIsread() {
 		return isread;
 	}
 
-
 	public void setIsread(Integer isread) {
 		this.isread = isread;
 	}
-
 
 	public Date getDate() {
 		return date;
 	}
 
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 
 	public String getGoods() {
 		return goods;
 	}
 
-
 	public void setGoods(String goods) {
 		this.goods = goods;
 	}
-
 
 	public BigInteger getNumber() {
 		return number;
 	}
 
-
 	public void setNumber(BigInteger number) {
 		this.number = number;
 	}
-
 
 	public BigInteger getUnitPrice() {
 		return unitPrice;
 	}
 
-
 	public void setUnitPrice(BigInteger unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-
 
 	public String getRemark() {
 		return remark;
 	}
 
-
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-
 
 	public User getUser() {
 		return user;
 	}
 
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 
 	public PersonalInvoice getPersonalInvoice() {
 		return personalInvoice;
 	}
 
-
 	public void setPersonalInvoice(PersonalInvoice personalInvoice) {
 		this.personalInvoice = personalInvoice;
 	}
 
-
+	public Map<String, Object> getMap() {
+		map.clear();
+		map.put("ID", ID);
+		map.put("pInvoiceID", pInvoiceID);
+		map.put("isread", isread);
+		map.put("date", date);
+		map.put("goods", goods);
+		map.put("number", number);
+		map.put("unitPrice", unitPrice);
+		map.put("remark", remark);
+		return map;
+	}
 }
