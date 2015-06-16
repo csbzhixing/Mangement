@@ -11,5 +11,5 @@ public interface ContractMapper {
 	public void delete(Map<String,Object> map);
 	public List<Contract> find(Map<String,Object> map);
 	public List<Contract> findByID(String contractID);
-	public void update(Contract contract);
+	public void update(Object object);
 }

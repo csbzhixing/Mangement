@@ -1,6 +1,8 @@
 package com.mangement.mybatis.model;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SalaryCurrent {
 
@@ -12,7 +14,8 @@ public class SalaryCurrent {
 	private BigInteger socialSecurity;
 	private BigInteger tax;
 	private User user;
-	
+	private Map<String,Object> map = new HashMap<String,Object>();
+
 	public SalaryCurrent() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,7 +39,6 @@ public class SalaryCurrent {
 		this.socialSecurity = socialSecurity;
 		this.tax = tax;
 	}
-
 
 	@Override
 	public String toString() {
@@ -110,5 +112,15 @@ public class SalaryCurrent {
 		this.user = user;
 	}
 	
-	
+	public Map<String, Object> getMap() {
+		map.clear();
+		map.put("ID", ID);
+		map.put("basicSalary", basicSalary);
+		map.put("livingAllowance", livingAllowance);
+		map.put("workDay", workDay);
+		map.put("attendanceAward", attendanceAward);
+		map.put("socialSecurity", socialSecurity);
+		map.put("tax", tax);
+		return map;
+	}
 }

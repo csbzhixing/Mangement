@@ -12,5 +12,5 @@ public interface SalaryHistoryMapper {
 	public void delete(Map<String,Object> map);
 	public List<SalaryHistory> find(Map<String,Object> map);
 	public List<SalaryHistory> findByID(String ID);
-	public void update(SalaryHistory salaryHistory);
+	public void update(Object object);
 }

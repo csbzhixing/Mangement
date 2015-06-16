@@ -73,8 +73,8 @@ public class ContractTest {
 
 	@Test
 	public void update() {
-		contractMapper.update(new Contract("13", "fdsa", new java.sql.Date(
+		contractMapper.update(new Contract("11000001", "fdsa", new java.sql.Date(
 				new java.util.Date().getTime()), new java.sql.Date(
-				new java.util.Date().getTime()), null, null, null));
+				new java.util.Date().getTime()), null, null, 1));
 	}
 }

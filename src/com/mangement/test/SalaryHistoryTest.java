@@ -43,7 +43,7 @@ public class SalaryHistoryTest {
 
 	@Test
 	public void delete() {
-		map.put("id", "123");
+		map.put("ID", "123");
 		salaryHistoryMapper.delete(map);
 	}
 
@@ -60,6 +60,8 @@ public class SalaryHistoryTest {
 
 	@Test
 	public void update() {
-		salaryHistoryMapper.update(new SalaryHistory(new java.sql.Date(new java.util.Date().getTime()),"123",null,null,new BigInteger("74"),null,null,null,null));
+		salaryHistoryMapper.update(new SalaryHistory(new java.sql.Date(
+				new java.util.Date().getTime()), "123", null, null,
+				new BigInteger("74"), null, null, null, null));
 	}
 }

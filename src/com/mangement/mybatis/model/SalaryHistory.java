@@ -2,6 +2,8 @@ package com.mangement.mybatis.model;
 
 import java.math.BigInteger;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SalaryHistory {
 
@@ -15,7 +17,8 @@ public class SalaryHistory {
 	private BigInteger tax;
 	private BigInteger totalSalary;
 	private User user;
-	
+	private Map<String,Object> map = new HashMap<String,Object>();
+
 	public SalaryHistory() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -42,8 +45,6 @@ public class SalaryHistory {
 		this.tax = tax;
 		this.totalSalary = totalSalary;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -135,4 +136,17 @@ public class SalaryHistory {
 		this.user = user;
 	}
 
+	public Map<String, Object> getMap() {
+		map.clear();
+		map.put("payoffDate", payoffDate);
+		map.put("ID", ID);
+		map.put("basicSalary", basicSalary);
+		map.put("livingAllowance", livingAllowance);
+		map.put("workDay", workDay);
+		map.put("attendanceAward", attendanceAward);
+		map.put("socialSecurity", socialSecurity);
+		map.put("tax", tax);
+		map.put("totalSalary", totalSalary);
+		return map;
+	}
 }

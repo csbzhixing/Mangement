@@ -12,5 +12,5 @@ public interface UserMapper {
 	public void delete(Map<String,Object> map);
 	public List<User> find(Map<String,Object> map);
 	public List<User> findByID(String ID);
-	public void update(User user);
+	public void update(Object object);
 }

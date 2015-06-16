@@ -20,7 +20,7 @@ public class CompanyInvoiceTest {
 	CompanyInvoiceMapper companyInvoiceMapper = null;
 	private SqlSession sqlSession = null;
 	Map<String,Object> map = new HashMap<String,Object>();
-	List<CompanyInvoice> CompanyInvoices = new ArrayList<CompanyInvoice>();
+	List<Object> CompanyInvoices = new ArrayList<Object>();
 	
 	@Before
 	public void setUp() throws Exception {
@@ -60,7 +60,7 @@ public class CompanyInvoiceTest {
 
 	@Test
 	public void delete() {
-		map.put("date", "2015-05-18");
+		map.put("date", new java.sql.Date(new java.util.Date().getTime()));
 		companyInvoiceMapper.delete(map);
 	}
 

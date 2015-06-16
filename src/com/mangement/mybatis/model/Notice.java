@@ -1,17 +1,18 @@
 package com.mangement.mybatis.model;
 
 import java.sql.Date;
-
-
+import java.util.HashMap;
+import java.util.Map;
 
 public class Notice {
 	private String noticeID;
 	private String ID;
 	private String content;
-	private Date date;	
+	private Date date;
 	private Integer isread;
 	private User user;
-	
+	private Map<String,Object> map = new HashMap<String,Object>();
+
 	public Notice() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -86,6 +87,14 @@ public class Notice {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
+	public Map<String,Object> getMap() {
+		map.clear();
+		map.put("noticeID", noticeID);
+		map.put("ID", ID);
+		map.put("content", content);
+		map.put("date", date);
+		map.put("isread", isread);
+		return map;
+	}
 }

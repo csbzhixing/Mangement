@@ -12,5 +12,5 @@ public interface PersonalInvoiceMapper {
 	public void delete(Map<String,Object> map);
 	public List<PersonalInvoice> find(Map<String,Object> map);
 	public List<PersonalInvoice> findByPInvoiceID(String pInvoiceID);
-	public void update(PersonalInvoice personalInvoice);
+	public void update(Object object);
 }

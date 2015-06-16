@@ -35,7 +35,7 @@ public class ReimTest {
 
 	@Test
 	public void insert() {
-		Reim a1 = new Reim("123","10000002");
+		Reim a1 = new Reim("123", "10000002");
 		Reims.add(a1);
 		map.put("Reims", Reims);
 		reimMapper.insert(map);
@@ -60,6 +60,8 @@ public class ReimTest {
 
 	@Test
 	public void update() {
-		reimMapper.update(new Reim("123","10000002",1,new java.sql.Date(new java.util.Date().getTime()),"shi",new BigInteger("1"),new BigInteger("654"),"fd"));
+		reimMapper.update(new Reim("123", "10000002", 1, new java.sql.Date(
+				new java.util.Date().getTime()), "shi", new BigInteger("1"),
+				new BigInteger("654"), "fd"));
 	}
 }
