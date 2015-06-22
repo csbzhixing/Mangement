@@ -12,9 +12,11 @@ public class PersonalInvoice {
 	private BigInteger payment;
 	private Date date;
 	private List<Reim> reim;
+	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public PersonalInvoice() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public PersonalInvoice(String pInvoiceID) {
@@ -68,7 +70,7 @@ public class PersonalInvoice {
 	}
 
 	public Map<String, Object> getMap() {
-		Map<String,Object> map = new HashMap<String,Object>();
+		map.clear();
 		map.put("pInvoiceID", pInvoiceID);
 		map.put("payment", payment);
 		map.put("date", date);

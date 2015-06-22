@@ -17,9 +17,11 @@ public class Reim {
 	private String remark;
 	private User user;
 	private PersonalInvoice personalInvoice;
+	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public Reim() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Reim(String iD, String pInvoiceID) {
@@ -130,7 +132,7 @@ public class Reim {
 	}
 
 	public Map<String, Object> getMap() {
-		Map<String,Object> map = new HashMap<String,Object>();
+		map.clear();
 		map.put("ID", ID);
 		map.put("pInvoiceID", pInvoiceID);
 		map.put("isread", isread);

@@ -17,9 +17,11 @@ public class SalaryHistory {
 	private BigInteger tax;
 	private BigInteger totalSalary;
 	private User user;
+	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public SalaryHistory() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public SalaryHistory(Date payoffDate, String iD) {
@@ -135,7 +137,7 @@ public class SalaryHistory {
 	}
 
 	public Map<String, Object> getMap() {
-		Map<String,Object> map = new HashMap<String,Object>();
+		map.clear();
 		map.put("payoffDate", payoffDate);
 		map.put("ID", ID);
 		map.put("basicSalary", basicSalary);

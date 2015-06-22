@@ -11,9 +11,11 @@ public class Notice {
 	private Date date;
 	private Integer isread;
 	private User user;
+	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public Notice() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Notice(String noticeID, String iD) {
@@ -87,7 +89,7 @@ public class Notice {
 	}
 
 	public Map<String,Object> getMap() {
-		Map<String,Object> map = new HashMap<String,Object>();
+		map.clear();
 		map.put("noticeID", noticeID);
 		map.put("ID", ID);
 		map.put("content", content);

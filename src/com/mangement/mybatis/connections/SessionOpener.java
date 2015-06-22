@@ -11,6 +11,7 @@ public class SessionOpener {
 	
 	public SessionOpener() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 
@@ -23,5 +24,11 @@ public class SessionOpener {
 	public void tearDown() throws Exception {
 		sqlSession.commit();
 		sqlSession.close();
+	}
+
+
+	public void insert() {
+		// TODO Auto-generated method stub
+		
 	}
 }

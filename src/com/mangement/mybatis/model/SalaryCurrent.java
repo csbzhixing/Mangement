@@ -14,9 +14,11 @@ public class SalaryCurrent {
 	private BigInteger socialSecurity;
 	private BigInteger tax;
 	private User user;
+	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public SalaryCurrent() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public SalaryCurrent(String iD) {
@@ -111,7 +113,7 @@ public class SalaryCurrent {
 	}
 	
 	public Map<String, Object> getMap() {
-		Map<String,Object> map = new HashMap<String,Object>();
+		map.clear();
 		map.put("ID", ID);
 		map.put("basicSalary", basicSalary);
 		map.put("livingAllowance", livingAllowance);
