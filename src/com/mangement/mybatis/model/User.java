@@ -29,6 +29,12 @@ public class User {
 		super();
 		ID = iD;
 	}
+	
+	public User(String iD, String password) {
+		super();
+		ID = iD;
+		this.password = password;
+	}
 
 	public User(String iD, String password, Integer authority, String name,
 			String sex, String birthday, String address, String phone,
