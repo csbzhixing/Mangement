@@ -17,8 +17,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association property="user" column="ID" select="com.mangement.mybatis.mappers.UserMapper.findByID"></association>
 	</resultMap>
 
+	<insert id="insert" parameterType="SalaryHistory">
+		insert into salaryhistory
+		values
+			(#{payoffDate},
+			#{ID},
+			#{basicSalary},
+			#{livingAllowance},
+			#{workDay},
+			#{attendanceAward},
+			#{socialSecurity},
+			#{tax},
+			#{totalSalary})
+	</insert>
 
-	<insert id="insert" parameterType="Map">
+	<insert id="add" parameterType="Map">
 		insert into salaryhistory
 		values
 		<foreach item="SalaryHistory" collection="SalaryHistorys"

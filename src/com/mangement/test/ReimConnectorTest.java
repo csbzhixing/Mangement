@@ -16,10 +16,16 @@ public class ReimConnectorTest {
 
 	@Test
 	public void insert() {
+		Reim a = new Reim("20150001", "10000093");
+		connect2Reim.insert(a);
+	}
+	
+	@Test
+	public void add() {
 		List<Reim> Reims = new ArrayList<Reim>();
-		Reim a1 = new Reim("15", "10000092");
+		Reim a1 = new Reim("20150002", "10000092");
 		Reims.add(a1);
-		connect2Reim.insert(Reims);
+		connect2Reim.add(Reims);
 	}
 
 	@Test

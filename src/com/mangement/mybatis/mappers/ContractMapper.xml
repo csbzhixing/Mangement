@@ -16,7 +16,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 
-	<insert id="insert" parameterType="Map">
+	<insert id="insert" parameterType="Contract">
+		insert into contract
+		values
+			(#{contractID},
+			#{name},
+			#{startTime},
+			#{finishTime},
+			#{totalPayment},
+			#{unpayment},
+			#{contractType})
+	</insert>
+	
+	<insert id="add" parameterType="Map">
 		insert into contract
 		values
 		<foreach item="Contract" collection="Contracts"

@@ -14,7 +14,13 @@ public class UserConnectorTest {
 	Integer size = 10;
 
 	@Test
-	public void insert() {
+	public void insert(){
+		User a = new User("14", "123", 3, "wing", "nan", "1999-9-9", "diqiu",
+				"123321", "hentai", "111");
+		connect2User.insert(a);
+	}
+	@Test
+	public void add() {
 		List<User> Users = new ArrayList<User>();
 		User a1 = new User("11", "123", 3, "wing", "nan", "1999-9-9", "diqiu",
 				"123321", "hentai", "111");
@@ -25,7 +31,7 @@ public class UserConnectorTest {
 		Users.add(a1);
 		Users.add(a2);
 		Users.add(a3);
-		connect2User.insert(Users);
+		connect2User.add(Users);
 	}
 
 	@Test

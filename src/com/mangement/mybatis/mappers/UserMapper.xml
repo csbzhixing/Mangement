@@ -21,8 +21,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<collection property="salaryCurrent" column="ID" select="com.mangement.mybatis.mappers.SalaryCurrentMapper.findByID"></collection>
 	</resultMap>
 
+	<insert id="insert" parameterType="User">
+		insert into user
+		values
+			(#{ID},
+			#{password},
+			#{authority},
+			#{name},
+			#{sex},
+			#{birthday},
+			#{address},
+			#{phone},
+			#{position},
+			#{IDcard})
+	</insert>
 
-	<insert id="insert" parameterType="Map">
+	<insert id="add" parameterType="Map">
 		insert into user
 		values
 		<foreach item="User" collection="Users"
@@ -75,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</delete>
-
+	
 	<select id="findByID" parameterType="String" resultMap="UserResult">
 		select * from user where ID like #{ID}
 	</select>

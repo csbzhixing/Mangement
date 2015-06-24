@@ -35,7 +35,7 @@ public class PersonalInvoiceTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		PersonalInvoice a1=new PersonalInvoice("11",new BigInteger("100"),new java.sql.Date(new java.util.Date().getTime()));
 		PersonalInvoice a2=new PersonalInvoice("16",new BigInteger("12"),new java.sql.Date(new java.util.Date().getTime()));
 		PersonalInvoice a3=new PersonalInvoice("17",new BigInteger("47"),new java.sql.Date(new java.util.Date().getTime()));
@@ -43,7 +43,7 @@ public class PersonalInvoiceTest {
 		PersonalInvoices.add(a2);
 		PersonalInvoices.add(a3);
 		map.put("PersonalInvoices", PersonalInvoices);
-		personalInvoiceMapper.insert(map);
+		personalInvoiceMapper.add(map);
 	}
 
 	@Test

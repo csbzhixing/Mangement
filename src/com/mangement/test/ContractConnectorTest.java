@@ -16,6 +16,11 @@ public class ContractConnectorTest {
 
 	@Test
 	public void insert() {
+		Contract a = new Contract("14");
+		connect2Contract.insert(a);
+	}
+	@Test
+	public void add() {
 		List<Contract> Contracts = new ArrayList<Contract>();
 		Contract a1 = new Contract("10", "aa", new java.sql.Date(
 				new java.util.Date().getTime()), new java.sql.Date(
@@ -32,7 +37,7 @@ public class ContractConnectorTest {
 		Contracts.add(a1);
 		Contracts.add(a2);
 		Contracts.add(a3);
-		connect2Contract.insert(Contracts);
+		connect2Contract.add(Contracts);
 	}
 
 	@Test
