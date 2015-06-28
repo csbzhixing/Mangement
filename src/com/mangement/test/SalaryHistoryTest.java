@@ -34,11 +34,11 @@ public class SalaryHistoryTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		SalaryHistory a1 = new SalaryHistory(new java.sql.Date(new java.util.Date().getTime()),"123");
 		SalaryHistorys.add(a1);
 		map.put("SalaryHistorys", SalaryHistorys);
-		salaryHistoryMapper.insert(map);
+		salaryHistoryMapper.add(map);
 	}
 
 	@Test

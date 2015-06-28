@@ -15,12 +15,22 @@ public class Connect2PersonalInvoice extends SessionOpener {
 		super();
 	}
 
-	public void insert(List<PersonalInvoice> list){
+	public void insert(PersonalInvoice personlInvoice){
+		try {
+			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
+			personalInvoiceMapper.insert(personlInvoice);
+			tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void add(List<PersonalInvoice> list){
 		try {
 			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("PersonalInvoices", list);
-			personalInvoiceMapper.insert(map);
+			personalInvoiceMapper.add(map);
 			tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();

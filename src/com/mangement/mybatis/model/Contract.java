@@ -15,11 +15,9 @@ public class Contract {
 	private BigInteger unpayment;
 	private Integer contractType;
 	private List<CompanyInvoice> companyInvoice;
-	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public Contract() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Contract(String contractID) {
@@ -113,7 +111,7 @@ public class Contract {
 	}
 
 	public Map<String,Object> getMap() {
-		map.clear();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("contractID", contractID);
 		map.put("name", name);
 		map.put("startTime", startTime);

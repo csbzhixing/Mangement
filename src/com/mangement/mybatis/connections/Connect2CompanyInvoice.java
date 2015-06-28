@@ -15,12 +15,22 @@ public class Connect2CompanyInvoice extends SessionOpener {
 		super();
 	}
 
-	public void insert(List<CompanyInvoice> list){
+	public void insert(CompanyInvoice companyInvoice){
+		try {
+			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
+			companyInvoiceMapper.insert(companyInvoice);
+			tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void add(List<CompanyInvoice> list){
 		try {
 			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("CompanyInvoices", list);
-			companyInvoiceMapper.insert(map);
+			companyInvoiceMapper.add(map);
 			tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();

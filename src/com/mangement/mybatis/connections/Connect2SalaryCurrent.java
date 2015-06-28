@@ -15,12 +15,22 @@ public class Connect2SalaryCurrent extends SessionOpener {
 		super();
 	}
 
-	public void insert(List<SalaryCurrent> list){
+	public void insert(SalaryCurrent salaryCurrent){
+		try {
+			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
+			salaryCurrentMapper.insert(salaryCurrent);
+			tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void add(List<SalaryCurrent> list){
 		try {
 			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("SalaryCurrents", list);
-			salaryCurrentMapper.insert(map);
+			salaryCurrentMapper.add(map);
 			tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -16,6 +16,11 @@ public class PersonalInvoiceConnectorTest {
 
 	@Test
 	public void insert() {
+		PersonalInvoice a = new PersonalInvoice("14");
+		connect2PersonalInvoice.insert(a);
+	}
+	@Test
+	public void add() {
 		List<PersonalInvoice> PersonalInvoices = new ArrayList<PersonalInvoice>();
 		PersonalInvoice a1=new PersonalInvoice("11",new BigInteger("100"),new java.sql.Date(new java.util.Date().getTime()));
 		PersonalInvoice a2=new PersonalInvoice("16",new BigInteger("12"),new java.sql.Date(new java.util.Date().getTime()));
@@ -23,7 +28,7 @@ public class PersonalInvoiceConnectorTest {
 		PersonalInvoices.add(a1);
 		PersonalInvoices.add(a2);
 		PersonalInvoices.add(a3);
-		connect2PersonalInvoice.insert(PersonalInvoices);
+		connect2PersonalInvoice.add(PersonalInvoices);
 	}
 
 	@Test

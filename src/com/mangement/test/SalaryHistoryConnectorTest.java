@@ -16,11 +16,18 @@ public class SalaryHistoryConnectorTest {
 
 	@Test
 	public void insert() {
+		SalaryHistory a = new SalaryHistory(new java.sql.Date(
+				new java.util.Date().getTime()), "20150001");
+		connect2SalaryHistory.insert(a);
+	}
+	
+	@Test
+	public void add() {
 		List<SalaryHistory> SalaryHistorys = new ArrayList<SalaryHistory>();
 		SalaryHistory a1 = new SalaryHistory(new java.sql.Date(
-				new java.util.Date().getTime()), "11");
+				new java.util.Date().getTime()), "20150002");
 		SalaryHistorys.add(a1);
-		connect2SalaryHistory.insert(SalaryHistorys);
+		connect2SalaryHistory.add(SalaryHistorys);
 	}
 
 	@Test

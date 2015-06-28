@@ -16,6 +16,12 @@ public class ContractConnectorTest {
 
 	@Test
 	public void insert() {
+		Contract a = new Contract("14");
+		connect2Contract.insert(a);
+	}
+
+	@Test
+	public void add() {
 		List<Contract> Contracts = new ArrayList<Contract>();
 		Contract a1 = new Contract("10", "aa", new java.sql.Date(
 				new java.util.Date().getTime()), new java.sql.Date(
@@ -32,29 +38,73 @@ public class ContractConnectorTest {
 		Contracts.add(a1);
 		Contracts.add(a2);
 		Contracts.add(a3);
-		connect2Contract.insert(Contracts);
+		connect2Contract.add(Contracts);
 	}
 
 	@Test
 	public void delete() {
-		connect2Contract.delete(new Contract(null,null,new java.sql.Date(
-				new java.util.Date().getTime()),
-				null, null, null, null));
+		connect2Contract.delete(new Contract(null, null, new java.sql.Date(
+				new java.util.Date().getTime()), null, null, null, null));
 	}
 
 	@Test
 	public void find() {
-		List<Contract> list = connect2Contract.find(new Contract(null,null,null,
-				null, null, null, 1), start, size);
-		for(Contract contract : list){
+		List<Contract> list = connect2Contract.find(new Contract(null, null,
+				null, null, null, null, 1), start, size);
+		for (Contract contract : list) {
+			System.out.println(contract);
+		}
+	}
+
+	@Test
+	public void findG_L() {
+		List<Contract> list = connect2Contract.findG_L(new Contract(null, null,
+				java.sql.Date.valueOf("2015-02-03"),
+				java.sql.Date.valueOf("2015-04-11"), null, null,
+				1), start, size);
+		for (Contract contract : list) {
+			System.out.println(contract);
+		}
+	}
+	
+	@Test
+	public void findGe_L() {
+		List<Contract> list = connect2Contract.findGe_L(new Contract(null, null,
+				java.sql.Date.valueOf("2015-02-03"),
+				java.sql.Date.valueOf("2015-04-11"),  null, null,
+				1), start, size);
+		for (Contract contract : list) {
+			System.out.println(contract);
+		}
+	}
+
+	@Test
+	public void findG_Le() {
+		List<Contract> list = connect2Contract.findG_Le(new Contract(null, null,
+				java.sql.Date.valueOf("2015-02-03"),
+				java.sql.Date.valueOf("2015-04-11"), null, null,
+				1), start, size);
+		for (Contract contract : list) {
+			System.out.println(contract);
+		}
+	}
+	
+	@Test
+	public void findGe_Le() {
+		List<Contract> list = connect2Contract.findGe_Le(new Contract(null, null,
+				java.sql.Date.valueOf("2015-02-03"),
+				java.sql.Date.valueOf("2015-04-11"), null, null,
+				1), start, size);
+		for (Contract contract : list) {
 			System.out.println(contract);
 		}
 	}
 
 	@Test
 	public void update() {
-		connect2Contract.update(new Contract("11000001", "fdsa", new java.sql.Date(
-				new java.util.Date().getTime()), new java.sql.Date(
-				new java.util.Date().getTime()), null, null, 1));
+		connect2Contract.update(new Contract("11000001", "fdsa",
+				new java.sql.Date(new java.util.Date().getTime()),
+				new java.sql.Date(new java.util.Date().getTime()), null, null,
+				1));
 	}
 }

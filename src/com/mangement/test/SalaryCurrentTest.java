@@ -34,11 +34,11 @@ public class SalaryCurrentTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		SalaryCurrent a1 = new SalaryCurrent("123");
 		SalaryCurrents.add(a1);
 		map.put("SalaryCurrents", SalaryCurrents);
-		salaryCurrentMapper.insert(map);
+		salaryCurrentMapper.add(map);
 	}
 
 	@Test

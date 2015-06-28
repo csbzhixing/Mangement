@@ -11,8 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<collection property="reim" column="pInvoiceID" select="com.mangement.mybatis.mappers.ReimMapper.findByPInvoiceID"></collection>
 	</resultMap>
 
+	<insert id="insert" parameterType="PersonalInvoice">
+		insert into personalinvoice
+		values
+			(#{pInvoiceID},
+			#{payment},
+			#{date})
+	</insert>
 
-	<insert id="insert" parameterType="Map">
+	<insert id="add" parameterType="Map">
 		insert into personalinvoice
 		values
 		<foreach item="PersonalInvoice" collection="PersonalInvoices"

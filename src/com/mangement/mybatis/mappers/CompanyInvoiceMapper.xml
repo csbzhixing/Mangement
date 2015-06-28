@@ -12,8 +12,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association property="contract" column="contractID" select="com.mangement.mybatis.mappers.ContractMapper.findByID"></association>
 	</resultMap>
 
+	<insert id="insert" parameterType="CompanyInvoice">
+		insert into companyinvoice
+		values
+			(#{cInvoiceID},
+			#{contractID},
+			#{payment},
+			#{date},
+			#{type})
+	</insert>
 
-	<insert id="insert" parameterType="Map">
+	<insert id="add" parameterType="Map">
 		insert into companyinvoice
 		values
 		<foreach item="CompanyInvoice" collection="CompanyInvoices"

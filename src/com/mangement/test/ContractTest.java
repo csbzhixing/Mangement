@@ -34,7 +34,7 @@ public class ContractTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		Contract a1 = new Contract("10", "aa", new java.sql.Date(
 				new java.util.Date().getTime()), new java.sql.Date(
 				new java.util.Date().getTime()), new BigInteger("10000"),
@@ -51,7 +51,7 @@ public class ContractTest {
 		Contracts.add(a2);
 		Contracts.add(a3);
 		map.put("Contracts", Contracts);
-		contractMapper.insert(map);
+		contractMapper.add(map);
 	}
 
 	@Test

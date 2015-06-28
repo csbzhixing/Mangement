@@ -34,7 +34,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		User a1=new User("11","123",3,"wing","nan","1999-9-9","diqiu","123321","hentai","111");
 		User a2=new User("15","1231",3,"wing","nan","1999-9-9","diqiu","123321","hentai","111");
 		User a3=new User("13","1213",3,"wing","nan","1999-9-9","diqiu","123321","hentai","111");
@@ -42,7 +42,7 @@ public class UserTest {
 		Users.add(a2);
 		Users.add(a3);
 		map.put("Users", Users);
-		userMapper.insert(map);
+		userMapper.add(map);
 	}
 
 	@Test

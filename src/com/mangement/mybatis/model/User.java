@@ -20,16 +20,20 @@ public class User {
 	private List<Reim> reim;
 	private List<SalaryHistory> salaryHistory;
 	private SalaryCurrent salaryCurrent;
-	private Map<String,Object> map = new HashMap<String,Object>();
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(String iD) {
 		super();
 		ID = iD;
+	}
+	
+	public User(String iD, String password) {
+		super();
+		ID = iD;
+		this.password = password;
 	}
 
 	public User(String iD, String password, Integer authority, String name,
@@ -169,7 +173,7 @@ public class User {
 	}
 
 	public Map<String, Object> getMap() {
-		map.clear();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("ID", ID);
 		map.put("password", password);
 		map.put("authority", authority);
