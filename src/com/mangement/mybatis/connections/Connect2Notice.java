@@ -15,12 +15,22 @@ public class Connect2Notice extends SessionOpener {
 		super();
 	}
 
-	public void insert(List<Notice> list){
+	public void insert(Notice notice){
+		try {
+			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
+			noticeMapper.insert(notice);
+			tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void add(List<Notice> list){
 		try {
 			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("Notices", list);
-			noticeMapper.insert(map);
+			noticeMapper.add(map);
 			tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();

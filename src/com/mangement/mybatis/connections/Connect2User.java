@@ -15,12 +15,22 @@ public class Connect2User extends SessionOpener {
 		super();
 	}
 
-	public void insert(List<User> list){
+	public void insert(User user){
+		try {
+			userMapper = (UserMapper) setUp(UserMapper.class);
+			userMapper.insert(user);
+			tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void add(List<User> list){
 		try {
 			userMapper = (UserMapper) setUp(UserMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("Users", list);
-			userMapper.insert(map);
+			userMapper.add(map);
 			tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();

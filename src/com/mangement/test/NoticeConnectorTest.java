@@ -14,11 +14,16 @@ public class NoticeConnectorTest {
 	Integer size = 10;
 
 	@Test
-	public void insert() {
+	public void insert(){
+		Notice a = new Notice("4", "20150002");
+		connect2Notice.insert(a);
+	}
+	@Test
+	public void add() {
 		List<Notice> Notices = new ArrayList<Notice>();
 		Notice a1 = new Notice("3", "20150003");
 		Notices.add(a1);
-		connect2Notice.insert(Notices);
+		connect2Notice.add(Notices);
 	}
 
 	@Test

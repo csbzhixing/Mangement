@@ -16,10 +16,16 @@ public class SalaryCurrentConnectorTest {
 
 	@Test
 	public void insert() {
+		SalaryCurrent a = new SalaryCurrent("123");
+		connect2SalaryCurrent.insert(a);
+	}
+	
+	@Test
+	public void add() {
 		List<SalaryCurrent> SalaryCurrents = new ArrayList<SalaryCurrent>();
-		SalaryCurrent a1 = new SalaryCurrent("15");
+		SalaryCurrent a1 = new SalaryCurrent("123");
 		SalaryCurrents.add(a1);
-		connect2SalaryCurrent.insert(SalaryCurrents);
+		connect2SalaryCurrent.add(SalaryCurrents);
 	}
 
 	@Test

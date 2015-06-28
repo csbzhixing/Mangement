@@ -15,7 +15,13 @@ public class CompanyInvoiceConnectorTest {
 	Integer size = 10;
 
 	@Test
-	public void insert() {
+	public void insert(){
+		CompanyInvoice a = new CompanyInvoice("123");
+		connect2CompanyInvoice.insert(a);
+	}
+	
+	@Test
+	public void add() {
 		List<CompanyInvoice> CompanyInvoices = new ArrayList<CompanyInvoice>();
 		CompanyInvoice a1 = new CompanyInvoice("11");
 		CompanyInvoice a2 = new CompanyInvoice("16");
@@ -35,7 +41,7 @@ public class CompanyInvoiceConnectorTest {
 		CompanyInvoices.add(a1);
 		CompanyInvoices.add(a2);
 		CompanyInvoices.add(a3);
-		connect2CompanyInvoice.insert(CompanyInvoices);
+		connect2CompanyInvoice.add(CompanyInvoices);
 	}
 
 	@Test

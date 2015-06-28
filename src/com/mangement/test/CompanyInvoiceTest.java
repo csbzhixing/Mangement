@@ -35,7 +35,7 @@ public class CompanyInvoiceTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		CompanyInvoice a1=new CompanyInvoice("11");
 		CompanyInvoice a2=new CompanyInvoice("16");
 		CompanyInvoice a3=new CompanyInvoice("17");
@@ -55,7 +55,7 @@ public class CompanyInvoiceTest {
 		CompanyInvoices.add(a2);
 		CompanyInvoices.add(a3);
 		map.put("CompanyInvoices", CompanyInvoices);
-		companyInvoiceMapper.insert(map);
+		companyInvoiceMapper.add(map);
 	}
 
 	@Test

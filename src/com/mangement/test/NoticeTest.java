@@ -32,11 +32,11 @@ public class NoticeTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		Notice a1 = new Notice("3","20150003");
 		Notices.add(a1);
 		map.put("Notices", Notices);
-		noticeMapper.insert(map);
+		noticeMapper.add(map);
 	}
 
 	@Test

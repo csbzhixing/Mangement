@@ -15,12 +15,22 @@ public class Connect2Reim extends SessionOpener {
 		super();
 	}
 
-	public void insert(List<Reim> list){
+	public void insert(Reim reim){
+		try {
+			reimMapper = (ReimMapper) setUp(ReimMapper.class);
+			reimMapper.insert(reim);
+			tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void add(List<Reim> list){
 		try {
 			reimMapper = (ReimMapper) setUp(ReimMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("Reims", list);
-			reimMapper.insert(map);
+			reimMapper.add(map);
 			tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();

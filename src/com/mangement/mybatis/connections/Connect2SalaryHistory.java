@@ -15,12 +15,22 @@ public class Connect2SalaryHistory extends SessionOpener {
 		super();
 	}
 
-	public void insert(List<SalaryHistory> list){
+	public void insert(SalaryHistory salaryHistory){
+		try {
+			salaryHistoryMapper = (SalaryHistoryMapper) setUp(SalaryHistoryMapper.class);
+			salaryHistoryMapper.insert(salaryHistory);
+			tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void add(List<SalaryHistory> list){
 		try {
 			salaryHistoryMapper = (SalaryHistoryMapper) setUp(SalaryHistoryMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("SalaryHistorys", list);
-			salaryHistoryMapper.insert(map);
+			salaryHistoryMapper.add(map);
 			tearDown();
 		} catch (Exception e) {
 			e.printStackTrace();

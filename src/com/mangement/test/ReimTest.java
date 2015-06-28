@@ -34,11 +34,11 @@ public class ReimTest {
 	}
 
 	@Test
-	public void insert() {
+	public void add() {
 		Reim a1 = new Reim("123", "10000002");
 		Reims.add(a1);
 		map.put("Reims", Reims);
-		reimMapper.insert(map);
+		reimMapper.add(map);
 	}
 
 	@Test

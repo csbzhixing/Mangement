@@ -17,6 +17,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="Map">
 		insert into notice
 		values
+			(#{noticeID},
+			#{ID},
+			#{content},
+			#{date},
+			#{isread})
+	</insert>
+	
+	<insert id="add" parameterType="Map">
+		insert into notice
+		values
 		<foreach item="Notice" collection="Notices" separator=",">
 			(#{Notice.noticeID},
 			#{Notice.ID},
