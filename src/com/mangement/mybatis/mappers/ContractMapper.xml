@@ -74,6 +74,66 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from contract where contractID like #{contractID}
 	</select>
 
+	<select id="findG_L" parameterType="Map" resultMap="ContractResult">
+		select * from contract
+		<where>
+			<if test="startTime!=null">
+				and startTime &gt; #{startTime}
+			</if>
+			<if test="finishTime!=null">
+				and finishTime &lt; #{finishTime}
+			</if>
+		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
+	<select id="findGe_L" parameterType="Map" resultMap="ContractResult">
+		select * from contract
+		<where>
+			<if test="startTime!=null">
+				and startTime &gt;= #{startTime}
+			</if>
+			<if test="finishTime!=null">
+				and finishTime &lt; #{finishTime}
+			</if>
+		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
+	<select id="findG_Le" parameterType="Map" resultMap="ContractResult">
+		select * from contract
+		<where>
+			<if test="startTime!=null">
+				and startTime &gt; #{startTime}
+			</if>
+			<if test="finishTime!=null">
+				and finishTime &lt;= #{finishTime}
+			</if>
+		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
+	<select id="findGe_Le" parameterType="Map" resultMap="ContractResult">
+		select * from contract
+		<where>
+			<if test="startTime!=null">
+				and startTime &gt;= #{startTime}
+			</if>
+			<if test="finishTime!=null">
+				and finishTime &lt;= #{finishTime}
+			</if>
+		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
 	<select id="find" parameterType="Map" resultMap="ContractResult">
 		select * from contract
 		<where>
