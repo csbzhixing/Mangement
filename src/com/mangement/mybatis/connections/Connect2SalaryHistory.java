@@ -15,29 +15,33 @@ public class Connect2SalaryHistory extends SessionOpener {
 		super();
 	}
 
-	public void insert(SalaryHistory salaryHistory){
+	public boolean insert(SalaryHistory salaryHistory){
 		try {
 			salaryHistoryMapper = (SalaryHistoryMapper) setUp(SalaryHistoryMapper.class);
 			salaryHistoryMapper.insert(salaryHistory);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<SalaryHistory> list){
+	public boolean add(List<SalaryHistory> list){
 		try {
 			salaryHistoryMapper = (SalaryHistoryMapper) setUp(SalaryHistoryMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("SalaryHistorys", list);
 			salaryHistoryMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(SalaryHistory model){
+	public boolean delete(SalaryHistory model){
 		try {
 			salaryHistoryMapper = (SalaryHistoryMapper) setUp(SalaryHistoryMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2SalaryHistory extends SessionOpener {
 			}
 			salaryHistoryMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -75,13 +81,15 @@ public class Connect2SalaryHistory extends SessionOpener {
 		return list;
 	}
 
-	public void update(SalaryHistory model){
+	public boolean update(SalaryHistory model){
 		try {
 			salaryHistoryMapper = (SalaryHistoryMapper) setUp(SalaryHistoryMapper.class);
 			salaryHistoryMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

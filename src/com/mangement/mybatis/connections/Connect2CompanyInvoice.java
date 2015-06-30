@@ -15,29 +15,33 @@ public class Connect2CompanyInvoice extends SessionOpener {
 		super();
 	}
 
-	public void insert(CompanyInvoice companyInvoice){
+	public boolean insert(CompanyInvoice companyInvoice){
 		try {
 			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
 			companyInvoiceMapper.insert(companyInvoice);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<CompanyInvoice> list){
+	public boolean add(List<CompanyInvoice> list){
 		try {
 			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("CompanyInvoices", list);
 			companyInvoiceMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(CompanyInvoice model){
+	public boolean delete(CompanyInvoice model){
 		try {
 			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2CompanyInvoice extends SessionOpener {
 			}
 			companyInvoiceMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -75,13 +81,15 @@ public class Connect2CompanyInvoice extends SessionOpener {
 		return list;
 	}
 
-	public void update(CompanyInvoice model){
+	public boolean update(CompanyInvoice model){
 		try {
 			companyInvoiceMapper = (CompanyInvoiceMapper) setUp(CompanyInvoiceMapper.class);
 			companyInvoiceMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

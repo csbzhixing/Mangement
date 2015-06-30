@@ -15,29 +15,33 @@ public class Connect2User extends SessionOpener {
 		super();
 	}
 
-	public void insert(User user){
+	public boolean insert(User user){
 		try {
 			userMapper = (UserMapper) setUp(UserMapper.class);
 			userMapper.insert(user);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<User> list){
+	public boolean add(List<User> list){
 		try {
 			userMapper = (UserMapper) setUp(UserMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("Users", list);
 			userMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(User model){
+	public boolean delete(User model){
 		try {
 			userMapper = (UserMapper) setUp(UserMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2User extends SessionOpener {
 			}
 			userMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -75,13 +81,15 @@ public class Connect2User extends SessionOpener {
 		return list;
 	}
 
-	public void update(User model){
+	public boolean update(User model){
 		try {
 			userMapper = (UserMapper) setUp(UserMapper.class);
 			userMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

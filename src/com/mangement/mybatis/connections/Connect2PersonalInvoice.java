@@ -15,29 +15,33 @@ public class Connect2PersonalInvoice extends SessionOpener {
 		super();
 	}
 
-	public void insert(PersonalInvoice personlInvoice){
+	public boolean insert(PersonalInvoice personlInvoice){
 		try {
 			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
 			personalInvoiceMapper.insert(personlInvoice);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<PersonalInvoice> list){
+	public boolean add(List<PersonalInvoice> list){
 		try {
 			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("PersonalInvoices", list);
 			personalInvoiceMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(PersonalInvoice model){
+	public boolean delete(PersonalInvoice model){
 		try {
 			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2PersonalInvoice extends SessionOpener {
 			}
 			personalInvoiceMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -75,13 +81,15 @@ public class Connect2PersonalInvoice extends SessionOpener {
 		return list;
 	}
 
-	public void update(PersonalInvoice model){
+	public boolean update(PersonalInvoice model){
 		try {
 			personalInvoiceMapper = (PersonalInvoiceMapper) setUp(PersonalInvoiceMapper.class);
 			personalInvoiceMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

@@ -15,29 +15,33 @@ public class Connect2Notice extends SessionOpener {
 		super();
 	}
 
-	public void insert(Notice notice){
+	public boolean insert(Notice notice){
 		try {
 			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
 			noticeMapper.insert(notice);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<Notice> list){
+	public boolean add(List<Notice> list){
 		try {
 			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("Notices", list);
 			noticeMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(Notice model){
+	public boolean delete(Notice model){
 		try {
 			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2Notice extends SessionOpener {
 			}
 			noticeMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -75,13 +81,15 @@ public class Connect2Notice extends SessionOpener {
 		return list;
 	}
 
-	public void update(Notice model){
+	public boolean update(Notice model){
 		try {
 			noticeMapper = (NoticeMapper) setUp(NoticeMapper.class);
 			noticeMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

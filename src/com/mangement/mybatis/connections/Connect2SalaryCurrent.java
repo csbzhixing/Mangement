@@ -15,29 +15,33 @@ public class Connect2SalaryCurrent extends SessionOpener {
 		super();
 	}
 
-	public void insert(SalaryCurrent salaryCurrent){
+	public boolean insert(SalaryCurrent salaryCurrent){
 		try {
 			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
 			salaryCurrentMapper.insert(salaryCurrent);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<SalaryCurrent> list){
+	public boolean add(List<SalaryCurrent> list){
 		try {
 			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("SalaryCurrents", list);
 			salaryCurrentMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(SalaryCurrent model){
+	public boolean delete(SalaryCurrent model){
 		try {
 			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2SalaryCurrent extends SessionOpener {
 			}
 			salaryCurrentMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -75,13 +81,15 @@ public class Connect2SalaryCurrent extends SessionOpener {
 		return list;
 	}
 
-	public void update(SalaryCurrent model){
+	public boolean update(SalaryCurrent model){
 		try {
 			salaryCurrentMapper = (SalaryCurrentMapper) setUp(SalaryCurrentMapper.class);
 			salaryCurrentMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

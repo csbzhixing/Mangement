@@ -15,29 +15,33 @@ public class Connect2Reim extends SessionOpener {
 		super();
 	}
 
-	public void insert(Reim reim){
+	public boolean insert(Reim reim){
 		try {
 			reimMapper = (ReimMapper) setUp(ReimMapper.class);
 			reimMapper.insert(reim);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<Reim> list){
+	public boolean add(List<Reim> list){
 		try {
 			reimMapper = (ReimMapper) setUp(ReimMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("Reims", list);
 			reimMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(Reim model){
+	public boolean delete(Reim model){
 		try {
 			reimMapper = (ReimMapper) setUp(ReimMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2Reim extends SessionOpener {
 			}
 			reimMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -75,13 +81,15 @@ public class Connect2Reim extends SessionOpener {
 		return list;
 	}
 
-	public void update(Reim model){
+	public boolean update(Reim model){
 		try {
 			reimMapper = (ReimMapper) setUp(ReimMapper.class);
 			reimMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

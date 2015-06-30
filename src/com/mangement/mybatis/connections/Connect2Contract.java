@@ -15,29 +15,33 @@ public class Connect2Contract extends SessionOpener {
 		super();
 	}
 
-	public void insert(Contract contract){
+	public boolean insert(Contract contract){
 		try {
 			contractMapper = (ContractMapper) setUp(ContractMapper.class);
 			contractMapper.insert(contract);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void add(List<Contract> list){
+	public boolean add(List<Contract> list){
 		try {
 			contractMapper = (ContractMapper) setUp(ContractMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("Contracts", list);
 			contractMapper.add(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void delete(Contract model){
+	public boolean delete(Contract model){
 		try {
 			contractMapper = (ContractMapper) setUp(ContractMapper.class);
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -48,8 +52,10 @@ public class Connect2Contract extends SessionOpener {
 			}
 			contractMapper.delete(map);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -164,13 +170,15 @@ public class Connect2Contract extends SessionOpener {
 		return list;
 	}
 
-	public void update(Contract model){
+	public boolean update(Contract model){
 		try {
 			contractMapper = (ContractMapper) setUp(ContractMapper.class);
 			contractMapper.update(model);
 			tearDown();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
